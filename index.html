@@ -1,35 +1,96 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tamil Food Restaurant</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Tamil Food Restaurant</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Google Fonts: Using 'Open Sans' for body and 'Lora' for headings, similar to Vasantha Bhavan's elegant feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300,400,600,700&family=Lora:wght@400,700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="menu.html">Menu</a>
-    <a href="cart.html">Cart</a>
-  </nav>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">Tamil Food Restaurant</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="#location-section">Location</a></li>
+            </ul>
+        </div>
+    </nav>
 
-  <div class="hero">
-    <div class="hero-content">
-      <h1>Welcome to Tamil Food Restaurant - Sharjah</h1>
-      <p>Enjoy authentic Tamil breakfast, lunch, and dinner items!</p>
-      <a href="menu.html" class="btn">View Menu</a>
-    </div>
-  </div>
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Experience Authentic Tamil Cuisine in Sharjah</h1>
+            <p>Savour the rich flavours of traditional South Indian breakfast, lunch, and dinner.</p>
+            <a href="menu.html" class="btn">Explore Our Menu</a>
+        </div>
+    </header>
 
-  <div class="location">
-    <h2>Find Us Here</h2>
-    <p>Visit us in Sharjah for fresh and flavorful Tamil food!</p>
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.2370656437167!2d55.4052106752112!3d25.361950177615195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ef5f4ce0635d06b%3A0x74028f3e4a2048!2sSharjah%2C%20UAE!5e0!3m2!1sen!2sae!4v1689590552150!5m2!1sen!2sae"
-      allowfullscreen=""
-      loading="lazy"
-    ></iframe>
-  </div>
+    <section class="food-gallery">
+        <h2>Our Culinary Delights</h2>
+        <div class="gallery-container">
+            <!-- IMPORTANT: Replace these placeholder images with actual high-quality, free-source images of Tamil food. -->
+            <!-- Good sources: Unsplash, Pexels, Pixabay. Search for "Tamil food", "South Indian food", "Dosa", "Idli", "Biryani" etc. -->
+            <div class="gallery-item">
+                <img src="https://placehold.co/600x400/E0E0E0/333333?text=Crispy+Dosa" alt="Crispy Dosa" class="food-img">
+                <h3>Dosa</h3>
+                <p>A thin, crispy pancake made from fermented batter, served with sambar and chutneys.</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://placehold.co/600x400/C8C8C8/333333?text=Soft+Idli+Sambar" alt="Soft Idli with Sambar" class="food-img">
+                <h3>Idli & Sambar</h3>
+                <p>Steamed rice cakes, soft and fluffy, paired with a flavorful lentil-vegetable stew.</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://placehold.co/600x400/E0E0E0/333333?text=Aromatic+Biryani" alt="Flavorful+Biryani" class="food-img">
+                <h3>Biryani</h3>
+                <p>Fragrant basmati rice cooked with tender meat or vegetables and aromatic spices.</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://placehold.co/600x400/C8C8C8/333333?text=Medu+Vada" alt="Crispy+Vada" class="food-img">
+                <h3>Medu Vada</h3>
+                <p>Savory, crispy, donut-shaped fritters made from black gram, perfect with chutney.</p>
+            </div>
+             <div class="gallery-item">
+                <img src="https://placehold.co/600x400/E0E0E0/333333?text=Sweet+Pongal" alt="Warm+Pongal" class="food-img">
+                <h3>Pongal</h3>
+                <p>A comforting dish made from rice and lentils, available in sweet (Sakkarai) or savory (Ven) versions.</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://placehold.co/600x400/C8C8C8/333333?text=Traditional+Meals" alt="Traditional+Tamil+Meals" class="food-img">
+                <h3>Traditional Meals</h3>
+                <p>A wholesome spread of rice, curries, poriyal, kootu, rasam, and more, served on a banana leaf.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="location" id="location-section">
+        <h2>Find Us Here</h2>
+        <p>Visit us in Sharjah for the freshest and most flavorful Tamil food experience!</p>
+        <!-- IMPORTANT: Replace this with your actual Google Maps embed code -->
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.0261175465223!2d55.40939521490895!3d25.3090620838612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5f5f5f5f5f5f%3A0x1234567890abcdef!2sSharjah%20City%20Center!5e0!3m2!1sen!2sae!4v1678888888888!5m2!1sen!2sae"
+            width="100%"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <div class="contact-info">
+            <p><strong>Address:</strong> 123 Food Street, Al Nahda, Sharjah, UAE</p>
+            <p><strong>Phone:</strong> +971 50 123 4567</p>
+            <p><strong>Email:</strong> info@tamilfoodrestaurant.com</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Tamil Food Restaurant. All rights reserved.</p>
+    </footer>
 </body>
 </html>
