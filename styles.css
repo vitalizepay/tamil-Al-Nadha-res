@@ -1,5 +1,65 @@
-body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #fff8f0; }
-header { background-color: #e63946; color: white; padding: 1rem; text-align: center; }
-nav a { margin: 0 1rem; color: white; text-decoration: none; }
-main { padding: 2rem; }
-.btn { background-color: #e63946; color: white; padding: 0.5rem 1rem; border: none; cursor: pointer; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+nav {
+  background-color: #e63946;
+  padding: 1rem;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+.hero {
+  background: url('unnamed.webp') no-repeat center center/cover;
+  height: 90vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.btn {
+  background-color: #f77f00;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  font-size: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.location {
+  padding: 2rem;
+  text-align: center;
+}
+
+iframe {
+  width: 100%;
+  max-width: 600px;
+  height: 300px;
+  border: none;
+}
