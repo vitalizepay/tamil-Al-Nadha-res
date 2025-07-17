@@ -217,6 +217,23 @@
             color: #666;
         }
         
+        .order-btn {
+            display: block;
+            background: var(--whatsapp);
+            color: white;
+            padding: 0.6rem;
+            margin: 0 1rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .order-btn:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+        }
+        
         /* Location Section */
         .location {
             padding: 5rem 2rem;
@@ -260,292 +277,12 @@
             color: var(--primary);
         }
         
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-        
-        /* Menu Page Styles */
-        .container {
-            display: flex;
-            flex-direction: column;
-            max-width: 1200px;
-            margin: 5rem auto 2rem;
-            padding: 1rem;
-        }
-        
-        .controls {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            padding: 1rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        
-        .search-box {
-            flex: 1;
-            min-width: 200px;
-        }
-        
-        .search-box input {
-            width: 100%;
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-        
-        .filter-buttons {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-        
-        .filter-btn {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 4px;
-            background: #eee;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-        }
-        
-        .filter-btn.active {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .filter-btn:hover {
-            background: #ddd;
-        }
-        
-        .filter-btn.active:hover {
-            background: var(--secondary);
-        }
-        
-        .menu-container {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .menu-items {
-            flex: 3;
-            min-width: 300px;
-        }
-        
-        .category {
-            margin-bottom: 2rem;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            animation: fadeInUp 0.5s ease-out;
-        }
-        
-        .category-title {
-            background: var(--primary);
-            color: white;
-            padding: 0.75rem 1rem;
-            font-size: 1.2rem;
-        }
-        
-        .items-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1rem;
-            padding: 1rem;
-        }
-        
-        .menu-item {
-            border: 1px solid #eee;
-            border-radius: 8px;
-            padding: 1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .menu-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .menu-item h3 {
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-        
-        .menu-item p {
-            color: var(--primary);
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-        
-        .add-to-cart {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.3s;
-            width: 100%;
-        }
-        
-        .add-to-cart:hover {
-            background: var(--secondary);
-        }
-        
-        .cart-sidebar {
-            flex: 1;
-            min-width: 300px;
-            background: white;
-            border-radius: 8px;
-            padding: 1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            height: fit-content;
-            position: sticky;
-            top: 6rem;
-            animation: fadeInRight 0.5s ease-out;
-        }
-        
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .cart-title {
-            font-size: 1.2rem;
-            color: var(--dark);
-        }
-        
-        .cart-items {
-            margin-bottom: 1rem;
-            max-height: 400px;
-            overflow-y: auto;
-        }
-        
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
-            animation: fadeIn 0.3s ease-out;
-        }
-        
-        .cart-item-info {
-            flex: 1;
-        }
-        
-        .cart-item-name {
-            font-weight: 500;
-        }
-        
-        .cart-item-price {
-            color: var(--primary);
-            font-size: 0.9rem;
-        }
-        
-        .cart-item-controls {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .quantity-btn {
-            width: 25px;
-            height: 25px;
-            border: none;
-            border-radius: 50%;
-            background: #eee;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-        }
-        
-        .quantity-btn:hover {
-            background: #ddd;
-            transform: scale(1.1);
-        }
-        
-        .remove-btn {
-            color: #e74c3c;
-            background: none;
-            border: none;
-            cursor: pointer;
-            margin-left: 0.5rem;
-            font-size: 1.2rem;
-            transition: transform 0.2s;
-        }
-        
-        .remove-btn:hover {
-            transform: scale(1.2);
-        }
-        
-        .cart-total {
-            font-weight: bold;
-            font-size: 1.1rem;
-            text-align: right;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #eee;
-        }
-        
-        .checkout-btn {
-            background: var(--whatsapp);
-            color: white;
-            border: none;
-            padding: 0.75rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s;
-            width: 100%;
-            font-size: 1rem;
-            margin-top: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-        
-        .checkout-btn:hover {
-            background: #128C7E;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-        }
-        
-        .empty-cart {
-            text-align: center;
-            color: #777;
-            padding: 1rem;
-        }
-        
-        .empty-menu {
-            text-align: center;
-            padding: 2rem;
-            color: #777;
-        }
-        
-        /* Floating Cart Button */
-        .floating-cart-btn {
+        /* WhatsApp Float Button */
+        .whatsapp-float {
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            background: var(--primary);
+            background: var(--whatsapp);
             color: white;
             width: 60px;
             height: 60px;
@@ -553,107 +290,25 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            cursor: pointer;
             z-index: 999;
             transition: all 0.3s;
             animation: pulse 2s infinite;
         }
         
-        .floating-cart-btn:hover {
-            background: var(--secondary);
+        .whatsapp-float:hover {
             transform: scale(1.1);
-        }
-        
-        .cart-count {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: var(--whatsapp);
-            color: white;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-        
-        /* WhatsApp Popup */
-        .whatsapp-popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1001;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-        }
-        
-        .whatsapp-popup.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .whatsapp-container {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            animation: fadeInUp 0.5s;
-        }
-        
-        .whatsapp-container h3 {
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-        
-        .whatsapp-container p {
-            margin-bottom: 1.5rem;
-        }
-        
-        .whatsapp-actions {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
-        
-        .whatsapp-btn {
-            background: var(--whatsapp);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s;
-        }
-        
-        .whatsapp-btn:hover {
             background: #128C7E;
-            transform: translateY(-2px);
         }
         
-        .cancel-btn {
-            background: #e74c3c;
-        }
-        
-        .cancel-btn:hover {
-            background: #c0392b;
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
         }
         
         /* Animations */
@@ -673,21 +328,10 @@
             }
         }
         
-        @keyframes fadeInRight {
-            from { 
-                opacity: 0;
-                transform: translateX(20px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(211, 84, 0, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(211, 84, 0, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(211, 84, 0, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
         
         /* Responsive Styles */
@@ -714,15 +358,6 @@
                 font-size: 1rem;
             }
             
-            .menu-container {
-                flex-direction: column;
-            }
-            
-            .cart-sidebar {
-                position: static;
-                margin-top: 2rem;
-            }
-            
             .gallery-container {
                 grid-template-columns: 1fr;
             }
@@ -736,59 +371,84 @@
                 <a href="index.html">Tamil Food Restaurant</a>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="cart.html">Cart</a></li>
-                <li><a href="#location-section">Location</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <header class="hero">
+    <header class="hero" id="home">
         <div class="hero-content">
             <h1 class="animate__animated animate__fadeInDown">Experience Authentic Tamil Cuisine in Sharjah</h1>
             <p class="animate__animated animate__fadeIn animate__delay-1s">Savour the rich flavours of traditional South Indian breakfast, lunch, and dinner.</p>
-            <a href="menu.html" class="btn animate__animated animate__fadeInUp animate__delay-2s">Explore Our Menu</a>
+            <a href="#menu" class="btn animate__animated animate__fadeInUp animate__delay-2s">View Our Menu</a>
         </div>
     </header>
 
-    <section class="food-gallery">
-        <h2 class="animate__animated animate__fadeIn">Our Culinary Delights</h2>
+    <section class="food-gallery" id="menu">
+        <h2 class="animate__animated animate__fadeIn">Our Popular Dishes</h2>
+        <p class="animate__animated animate__fadeIn">Click "Order Now" to send your order directly via WhatsApp</p>
         <div class="gallery-container">
             <div class="gallery-item animate__animated animate__fadeInUp">
                 <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1488&q=80" alt="Crispy Dosa" class="food-img">
                 <h3>Dosa</h3>
                 <p>A thin, crispy pancake made from fermented batter, served with sambar and chutneys.</p>
+                <a href="https://wa.me/971501234567?text=I%20would%20like%20to%20order%20Dosa" class="order-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Order Now
+                </a>
             </div>
             <div class="gallery-item animate__animated animate__fadeInUp animate__delay-1s">
                 <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Soft Idli with Sambar" class="food-img">
                 <h3>Idli & Sambar</h3>
                 <p>Steamed rice cakes, soft and fluffy, paired with a flavorful lentil-vegetable stew.</p>
+                <a href="https://wa.me/971501234567?text=I%20would%20like%20to%20order%20Idli%20%26%20Sambar" class="order-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Order Now
+                </a>
             </div>
             <div class="gallery-item animate__animated animate__fadeInUp animate__delay-2s">
                 <img src="https://images.unsplash.com/photo-1633945274309-2c16c9682a8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Flavorful Biryani" class="food-img">
                 <h3>Biryani</h3>
                 <p>Fragrant basmati rice cooked with tender meat or vegetables and aromatic spices.</p>
+                <a href="https://wa.me/971501234567?text=I%20would%20like%20to%20order%20Biryani" class="order-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Order Now
+                </a>
             </div>
             <div class="gallery-item animate__animated animate__fadeInUp">
                 <img src="https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Crispy Vada" class="food-img">
                 <h3>Medu Vada</h3>
                 <p>Savory, crispy, donut-shaped fritters made from black gram, perfect with chutney.</p>
+                <a href="https://wa.me/971501234567?text=I%20would%20like%20to%20order%20Medu%20Vada" class="order-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Order Now
+                </a>
             </div>
             <div class="gallery-item animate__animated animate__fadeInUp animate__delay-1s">
                 <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1521&q=80" alt="Warm Pongal" class="food-img">
                 <h3>Pongal</h3>
-                <p>A comforting dish made from rice and lentils, available in sweet (Sakkarai) or savory (Ven) versions.</p>
+                <p>A comforting dish made from rice and lentils, available in sweet or savory versions.</p>
+                <a href="https://wa.me/971501234567?text=I%20would%20like%20to%20order%20Pongal" class="order-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Order Now
+                </a>
             </div>
             <div class="gallery-item animate__animated animate__fadeInUp animate__delay-2s">
                 <img src="https://images.unsplash.com/photo-1601050690117-64b6a20c1a0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Traditional Tamil Meals" class="food-img">
                 <h3>Traditional Meals</h3>
                 <p>A wholesome spread of rice, curries, poriyal, kootu, rasam, and more, served on a banana leaf.</p>
+                <a href="https://wa.me/971501234567?text=I%20would%20like%20to%20order%20Traditional%20Meal" class="order-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Order Now
+                </a>
             </div>
+        </div>
+        
+        <div style="margin-top: 3rem;">
+            <a href="https://wa.me/971501234567?text=Hello%2C%20I%20would%20like%20to%20see%20the%20full%20menu%20and%20place%20an%20order" class="btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> View Full Menu & Order
+            </a>
         </div>
     </section>
 
-    <section class="location" id="location-section">
+    <section class="location" id="location">
         <h2 class="animate__animated animate__fadeIn">Find Us Here</h2>
         <p class="animate__animated animate__fadeIn">Visit us in Sharjah for the freshest and most flavorful Tamil food experience!</p>
         <iframe
@@ -801,418 +461,47 @@
             referrerpolicy="no-referrer-when-downgrade"
             class="animate__animated animate__fadeIn">
         </iframe>
-        <div class="contact-info animate__animated animate__fadeIn">
+        <div class="contact-info" id="contact">
             <p><strong>Address:</strong> 123 Food Street, Al Nahda, Sharjah, UAE</p>
             <p><strong>Phone:</strong> +971 50 123 4567</p>
             <p><strong>Email:</strong> info@tamilfoodrestaurant.com</p>
+            <p><strong>Opening Hours:</strong> Daily 7:00 AM - 11:00 PM</p>
         </div>
     </section>
 
-    <!-- Menu Section -->
-    <section class="container" id="menu-section">
-        <div class="controls">
-            <div class="search-box">
-                <input type="text" id="search-input" placeholder="Search menu items...">
-            </div>
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-category="all">All</button>
-                <button class="filter-btn" data-category="Breakfast">Breakfast</button>
-                <button class="filter-btn" data-category="Dosas">Dosas</button>
-                <button class="filter-btn" data-category="Seafood">Seafood</button>
-                <button class="filter-btn" data-category="Soups">Soups</button>
-                <button class="filter-btn" data-category="Beverages">Beverages</button>
-                <button class="filter-btn" data-category="Vegetarian">Vegetarian</button>
-                <button class="filter-btn" data-category="Non-Veg">Non-Veg</button>
-            </div>
-        </div>
-        
-        <div class="menu-container">
-            <div class="menu-items" id="menu-items">
-                <!-- Menu items will be rendered here -->
-            </div>
-            
-            <div class="cart-sidebar">
-                <div class="cart-header">
-                    <h2 class="cart-title">Your Order</h2>
-                </div>
-                <div class="cart-items" id="cart-items">
-                    <!-- Cart items will be rendered here -->
-                </div>
-                <div class="cart-total" id="cart-total">
-                    Total: AED 0.00
-                </div>
-                <button class="checkout-btn" id="checkout-btn">
-                    <i class="fab fa-whatsapp"></i> Order via WhatsApp
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Floating Cart Button -->
-    <div class="floating-cart-btn" id="floating-cart-btn">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="cart-count" id="cart-count">0</span>
-    </div>
-
-    <!-- WhatsApp Popup -->
-    <div class="whatsapp-popup" id="whatsapp-popup">
-        <div class="whatsapp-container">
-            <h3>Confirm Your Order</h3>
-            <p>You're about to send your order via WhatsApp. Please confirm to proceed.</p>
-            <div class="whatsapp-actions">
-                <button class="whatsapp-btn" id="confirm-whatsapp">
-                    <i class="fab fa-whatsapp"></i> Send Order
-                </button>
-                <button class="whatsapp-btn cancel-btn" id="cancel-whatsapp">
-                    <i class="fas fa-times"></i> Cancel
-                </button>
-            </div>
-        </div>
-    </div>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/971501234567" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <footer>
         <p>&copy; 2025 Tamil Food Restaurant. All rights reserved.</p>
     </footer>
 
     <script>
-        // Enhanced menu data with categories and vegetarian info
-        const menuItems = [
-            { id: 1, name: "Idli (3 Pcs)", price: 6, category: "Breakfast", veg: true },
-            { id: 2, name: "Idli Vada", price: 5, category: "Breakfast", veg: true },
-            { id: 3, name: "Vada (3 Pcs)", price: 6, category: "Breakfast", veg: true },
-            { id: 4, name: "Sambar Vada (1 Pc)", price: 5, category: "Breakfast", veg: true },
-            { id: 5, name: "Pongal + Vada", price: 7, category: "Breakfast", veg: true },
-            { id: 6, name: "Set Dosa (2 Pcs)", price: 6, category: "Dosas", veg: true },
-            { id: 7, name: "Poori Set (Breakfast)", price: 6, category: "Breakfast", veg: true },
-            { id: 8, name: "Idiyappam", price: 5, category: "Breakfast", veg: true },
-            { id: 9, name: "Plain Roast", price: 6, category: "Dosas", veg: true },
-            { id: 10, name: "Ghee Roast", price: 7, category: "Dosas", veg: true },
-            { id: 11, name: "Onion Roast", price: 7, category: "Dosas", veg: true },
-            { id: 12, name: "Rava Upma", price: 5, category: "Breakfast", veg: true },
-            { id: 13, name: "Semiya Khichadi", price: 6, category: "Breakfast", veg: true },
-            { id: 14, name: "Mysore Masala Dosa", price: 8, category: "Dosas", veg: true },
-            { id: 15, name: "Butter Masala Dosa", price: 8, category: "Dosas", veg: true },
-            { id: 16, name: "Paneer Dosa", price: 8, category: "Dosas", veg: true },
-            { id: 17, name: "Rava Dosa", price: 7, category: "Dosas", veg: true },
-            { id: 18, name: "Onion Rava", price: 8, category: "Dosas", veg: true },
-            { id: 19, name: "Rava Masala Dosa", price: 8, category: "Dosas", veg: true },
-            { id: 20, name: "Egg Dosa", price: 7, category: "Dosas", veg: false },
-            { id: 21, name: "Onion Uthappam", price: 7, category: "Dosas", veg: true },
-            { id: 22, name: "Tomato Uthappam", price: 7, category: "Dosas", veg: true },
-            { id: 23, name: "Masala Uthappam", price: 7, category: "Dosas", veg: true },
-            { id: 24, name: "Mix Uthappam", price: 8, category: "Dosas", veg: true },
-            { id: 25, name: "Podi Dosa", price: 7, category: "Dosas", veg: true },
-            { id: 26, name: "Fish Masala", price: 12, category: "Seafood", veg: false },
-            { id: 27, name: "Fish Fry (King Fish)", price: 12, category: "Seafood", veg: false },
-            { id: 28, name: "Sherry Fry", price: 12, category: "Seafood", veg: false },
-            { id: 29, name: "Fish Manchurian (Gravy)", price: 15, category: "Seafood", veg: false },
-            { id: 30, name: "Fish Chilly (Dry/Gravy)", price: 14, category: "Seafood", veg: false },
-            { id: 31, name: "Ayala Fish Fry", price: 12, category: "Seafood", veg: false },
-            { id: 32, name: "Prawns Masala", price: 15, category: "Seafood", veg: false },
-            { id: 33, name: "Prawns Dry Fry", price: 15, category: "Seafood", veg: false },
-            { id: 34, name: "Prawns Ginger", price: 15, category: "Seafood", veg: false },
-            { id: 35, name: "Egg Masala/Egg Roast", price: 8, category: "Non-Veg", veg: false },
-            { id: 36, name: "Egg Bhurji", price: 6, category: "Non-Veg", veg: false },
-            { id: 37, name: "Vegetable Soup", price: 5, category: "Soups", veg: true },
-            { id: 38, name: "Chicken Soup", price: 8, category: "Soups", veg: false },
-            { id: 39, name: "Mutton Soup", price: 10, category: "Soups", veg: false },
-            { id: 40, name: "Tea", price: 1, category: "Beverages", veg: true },
-            { id: 41, name: "Coffee Fresh Milk", price: 3, category: "Beverages", veg: true },
-            { id: 42, name: "Mineral Water (S/L)", price: 1, category: "Beverages", veg: true },
-            { id: 43, name: "Soft Drinks", price: 2.5, category: "Beverages", veg: true },
-            { id: 44, name: "Badam Milk (Hot)", price: 3, category: "Beverages", veg: true },
-            { id: 45, name: "Chettinadu Chicken", price: 13, category: "Non-Veg", veg: false },
-            { id: 46, name: "Prawn Dosa", price: 10, category: "Seafood", veg: false },
-            { id: 47, name: "Nandu Masala (Crab)", price: 12, category: "Seafood", veg: false },
-            { id: 48, name: "Mutton Boti Masala", price: 10, category: "Non-Veg", veg: false },
-            { id: 49, name: "Mutton Liver Masala", price: 10, category: "Non-Veg", veg: false },
-            { id: 50, name: "Mini Tiffin (All in 1 Plate)", price: 9, category: "Breakfast", veg: true }
-        ];
-
-        // DOM Elements
-        const menuContainer = document.getElementById('menu-items');
-        const cartContainer = document.getElementById('cart-items');
-        const cartTotalElement = document.getElementById('cart-total');
-        const searchInput = document.getElementById('search-input');
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const checkoutBtn = document.getElementById('checkout-btn');
-        const floatingCartBtn = document.getElementById('floating-cart-btn');
-        const cartCount = document.getElementById('cart-count');
-        const whatsappPopup = document.getElementById('whatsapp-popup');
-        const confirmWhatsappBtn = document.getElementById('confirm-whatsapp');
-        const cancelWhatsappBtn = document.getElementById('cancel-whatsapp');
-        
-        // State variables
-        let currentCategory = 'all';
-        let currentSearchTerm = '';
-        let currentVegFilter = null;
-        
-        // Initialize the app
-        document.addEventListener('DOMContentLoaded', () => {
-            renderMenu();
-            updateCartUI();
-            
-            // Add event listeners
-            searchInput.addEventListener('input', handleSearch);
-            filterButtons.forEach(btn => {
-                btn.addEventListener('click', () => handleFilterClick(btn));
+        // Simple script for smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
-            
-            checkoutBtn.addEventListener('click', showWhatsappPopup);
-            floatingCartBtn.addEventListener('click', scrollToCart);
-            confirmWhatsappBtn.addEventListener('click', sendWhatsappOrder);
-            cancelWhatsappBtn.addEventListener('click', hideWhatsappPopup);
-            
-            // Scroll animations
-            setupScrollAnimations();
         });
         
-        // Setup scroll animations
-        function setupScrollAnimations() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            document.querySelectorAll('.gallery-item, .contact-info, iframe').forEach(el => {
-                observer.observe(el);
-            });
-        }
-        
-        // Scroll to cart section
-        function scrollToCart() {
-            document.getElementById('menu-section').scrollIntoView({ behavior: 'smooth' });
-        }
-        
-        // Render the menu based on current filters
-        function renderMenu() {
-            menuContainer.innerHTML = '';
-            
-            // Filter items based on search term and category
-            const filteredItems = menuItems.filter(item => {
-                const matchesSearch = item.name.toLowerCase().includes(currentSearchTerm.toLowerCase());
-                const matchesCategory = currentCategory === 'all' || 
-                                      item.category === currentCategory || 
-                                      (currentCategory === 'Vegetarian' && item.veg) ||
-                                      (currentCategory === 'Non-Veg' && !item.veg);
-                
-                return matchesSearch && matchesCategory;
-            });
-            
-            // Group by category
-            const categories = [...new Set(filteredItems.map(item => item.category))];
-            
-            if (filteredItems.length === 0) {
-                menuContainer.innerHTML = '<p class="empty-menu">No items match your search.</p>';
-                return;
-            }
-            
-            categories.forEach(category => {
-                const categoryItems = filteredItems.filter(item => item.category === category);
-                
-                const categoryDiv = document.createElement('div');
-                categoryDiv.className = 'category';
-                
-                const categoryTitle = document.createElement('div');
-                categoryTitle.className = 'category-title';
-                categoryTitle.textContent = category;
-                
-                const itemsGrid = document.createElement('div');
-                itemsGrid.className = 'items-grid';
-                
-                categoryItems.forEach(item => {
-                    const itemElement = document.createElement('div');
-                    itemElement.className = 'menu-item';
-                    itemElement.innerHTML = `
-                        <h3>${item.name}</h3>
-                        <p>AED ${item.price.toFixed(2)}</p>
-                        <button class="add-to-cart" onclick="addToCart(${item.id})">Add to Cart</button>
-                    `;
-                    itemsGrid.appendChild(itemElement);
-                });
-                
-                categoryDiv.appendChild(categoryTitle);
-                categoryDiv.appendChild(itemsGrid);
-                menuContainer.appendChild(categoryDiv);
-            });
-        }
-        
-        // Handle search input
-        function handleSearch(e) {
-            currentSearchTerm = e.target.value;
-            renderMenu();
-        }
-        
-        // Handle filter button clicks
-        function handleFilterClick(btn) {
-            filterButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            currentCategory = btn.dataset.category;
-            renderMenu();
-        }
-        
-        // Add item to cart
-        function addToCart(id) {
-            const item = menuItems.find(i => i.id === id);
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const existing = cart.find(i => i.id === id);
-            
-            if (existing) {
-                existing.quantity++;
-            } else {
-                cart.push({ ...item, quantity: 1 });
-            }
-            
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartUI();
-            
-            // Show a brief visual feedback
-            const addButton = document.querySelector(`.add-to-cart[onclick="addToCart(${id})"]`);
-            if (addButton) {
-                addButton.textContent = 'Added!';
-                addButton.style.backgroundColor = 'var(--success)';
-                setTimeout(() => {
-                    addButton.textContent = 'Add to Cart';
-                    addButton.style.backgroundColor = 'var(--primary)';
-                }, 1000);
-            }
-            
-            // Animate cart count
-            animateCartCount();
-        }
-        
-        // Animate cart count
-        function animateCartCount() {
-            cartCount.style.transform = 'scale(1.5)';
-            setTimeout(() => {
-                cartCount.style.transform = 'scale(1)';
-            }, 300);
-        }
-        
-        // Update cart quantity
-        function changeQuantity(id, delta) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const item = cart.find(i => i.id === id);
-            
-            if (item) {
-                item.quantity += delta;
-                
-                if (item.quantity <= 0) {
-                    cart = cart.filter(i => i.id !== id);
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                    observer.unobserve(entry.target);
                 }
-                
-                localStorage.setItem('cart', JSON.stringify(cart));
-                updateCartUI();
-            }
-        }
-        
-        // Remove item from cart
-        function removeFromCart(id) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart = cart.filter(i => i.id !== id);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartUI();
-        }
-        
-        // Update the cart UI
-        function updateCartUI() {
-            cartContainer.innerHTML = '';
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            let total = 0;
-            
-            if (cart.length === 0) {
-                cartContainer.innerHTML = '<p class="empty-cart">Your cart is empty</p>';
-                cartTotalElement.textContent = 'Total: AED 0.00';
-                cartCount.textContent = '0';
-                checkoutBtn.style.display = 'none';
-                return;
-            }
-            
-            checkoutBtn.style.display = 'flex';
-            
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                total += itemTotal;
-                
-                const cartItem = document.createElement('div');
-                cartItem.className = 'cart-item';
-                cartItem.innerHTML = `
-                    <div class="cart-item-info">
-                        <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-price">AED ${itemTotal.toFixed(2)}</div>
-                    </div>
-                    <div class="cart-item-controls">
-                        <button class="quantity-btn" onclick="changeQuantity(${item.id}, -1)">-</button>
-                        <span>${item.quantity}</span>
-                        <button class="quantity-btn" onclick="changeQuantity(${item.id}, 1)">+</button>
-                        <button class="remove-btn" onclick="removeFromCart(${item.id})">×</button>
-                    </div>
-                `;
-                cartContainer.appendChild(cartItem);
             });
-            
-            cartTotalElement.textContent = `Total: AED ${total.toFixed(2)}`;
-            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-        }
+        }, { threshold: 0.1 });
         
-        // Show WhatsApp confirmation popup
-        function showWhatsappPopup() {
-            whatsappPopup.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        // Hide WhatsApp confirmation popup
-        function hideWhatsappPopup() {
-            whatsappPopup.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-        
-        // Send order via WhatsApp
-        function sendWhatsappOrder() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            
-            if (cart.length === 0) {
-                alert('Your cart is empty!');
-                return;
-            }
-            
-            // Format order message
-            let message = `*Order from Tamil Food Restaurant*%0A%0A`;
-            message += `*Customer Details*%0A`;
-            message += `Name: [Please enter your name]%0A`;
-            message += `Phone: [Please enter your phone]%0A`;
-            message += `Delivery Address: [Please enter address if delivery]%0A%0A`;
-            
-            message += `*Order Items*%0A`;
-            cart.forEach(item => {
-                message += `${item.name} x ${item.quantity} - AED ${(item.price * item.quantity).toFixed(2)}%0A`;
-            });
-            
-            message += `%0A*Total: AED ${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}*%0A%0A`;
-            message += `*Special Instructions:* [Any special requests or notes]`;
-            
-            // WhatsApp API URL
-            const phoneNumber = '+971501234567'; // Replace with your restaurant's WhatsApp number
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
-            
-            // Open WhatsApp in new tab
-            window.open(whatsappUrl, '_blank');
-            
-            // Clear cart after sending
-            localStorage.removeItem('cart');
-            updateCartUI();
-            hideWhatsappPopup();
-        }
-        
-        // Make functions available globally
-        window.addToCart = addToCart;
-        window.changeQuantity = changeQuantity;
-        window.removeFromCart = removeFromCart;
+        document.querySelectorAll('.gallery-item, .contact-info, iframe').forEach(el => {
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>
