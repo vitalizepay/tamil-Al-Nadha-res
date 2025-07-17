@@ -20,7 +20,7 @@ document.getElementById('checkout-form').addEventListener('submit', function(e) 
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   const orderDetails = cart.map(item => `${item.name} x ${item.quantity}`).join('%0A');
   const message = `Name: ${name}%0APhone: ${phone}%0AAddress: ${address}%0AOrder:%0A${orderDetails}`;
-  window.location.href = `https://wa.me/971501234567?text=${message}`;
+  window.location.href = `https://wa.me/971544205511?text=${message}`;
 });
 </script>
 </body></html>
