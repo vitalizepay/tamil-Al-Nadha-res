@@ -727,6 +727,158 @@
                 grid-template-columns: 1fr;
             }
         }
+/* Chatbot Styles */
+.floating-chat-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #2c3e50;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 999;
+    transition: all 0.3s ease;
+}
+.floating-chat-btn:hover {
+    background: #1a252f;
+    transform: scale(1.1);
+}
+.chatbot-container {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 350px;
+    height: 450px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(20px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+.chatbot-container.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+.chatbot-header {
+    background: #2c3e50;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.chatbot-close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+.chatbot-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background: #f9f9f9;
+}
+.chatbot-input {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #eee;
+    background: white;
+}
+.chatbot-text-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+}
+.chatbot-send-btn {
+    margin-left: 10px;
+    padding: 10px 15px;
+    background: #2c3e50;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.chatbot-quick-replies {
+    padding: 10px;
+    border-top: 1px solid #eee;
+    background: #f5f5f5;
+}
+.chatbot-quick-replies p {
+    margin: 0 0 8px 0;
+    font-size: 12px;
+    color: #666;
+}
+.quick-reply-btn {
+    margin: 0 5px 5px 0;
+    padding: 5px 10px;
+    background: #e3f2fd;
+    border: 1px solid #bbdefb;
+    border-radius: 15px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.quick-reply-btn:hover {
+    background: #bbdefb;
+}
+.message {
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: 18px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+.user-message {
+    background: #e3f2fd;
+    margin-left: auto;
+    border-bottom-right-radius: 5px;
+}
+.bot-message {
+    background: #f1f1f1;
+    margin-right: auto;
+    border-bottom-left-radius: 5px;
+}
+.typing-indicator {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #f1f1f1;
+    border-radius: 18px;
+    margin-bottom: 15px;
+    border-bottom-left-radius: 5px;
+}
+.typing-indicator span {
+    height: 8px;
+    width: 8px;
+    background: #666;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 2px;
+    animation: typing 1s infinite ease-in-out;
+}
+.typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+.typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typing {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
     </style>
 </head>
 <body>
@@ -848,11 +1000,7 @@
         </div>
     </section>
 
-    <!-- Floating Cart Button -->
-    <div class="floating-cart-btn" id="floating-cart-btn">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="cart-count" id="cart-count">0</span>
-    </div>
+    
 
     <!-- WhatsApp Popup -->
     <div class="whatsapp-popup" id="whatsapp-popup">
@@ -1214,5 +1362,108 @@
         window.changeQuantity = changeQuantity;
         window.removeFromCart = removeFromCart;
     </script>
+<!-- Floating Chat Button -->
+<div class="floating-chat-btn" id="floating-chat-btn">
+    <i class="fas fa-comments"></i>
+</div>
+
+<!-- Chatbot Container -->
+<div class="chatbot-container" id="chatbot-container">
+    <div class="chatbot-header">
+        <h3>Restaurant AI Assistant</h3>
+        <button class="chatbot-close-btn">×</button>
+    </div>
+    <div class="chatbot-messages" id="chatbot-messages"></div>
+    <div class="chatbot-input">
+        <input type="text" placeholder="Type your message..." class="chatbot-text-input" id="chatbot-input">
+        <button class="chatbot-send-btn">Send</button>
+    </div>
+    <div class="chatbot-quick-replies">
+        <p>Quick questions:</p>
+        <button class="quick-reply-btn">What's on the menu?</button>
+        <button class="quick-reply-btn">How to make reservation?</button>
+        <button class="quick-reply-btn">What are your hours?</button>
+        <button class="quick-reply-btn">Where are you located?</button>
+    </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const chatBtn = document.getElementById('floating-chat-btn');
+    const chatContainer = document.getElementById('chatbot-container');
+    const closeBtn = document.querySelector('.chatbot-close-btn');
+    const sendBtn = document.querySelector('.chatbot-send-btn');
+    const chatInput = document.getElementById('chatbot-input');
+    const messagesContainer = document.getElementById('chatbot-messages');
+
+    chatBtn.addEventListener('click', () => chatContainer.classList.toggle('active'));
+    closeBtn.addEventListener('click', () => chatContainer.classList.remove('active'));
+    sendBtn.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage();
+    });
+
+    function sendMessage() {
+        const message = chatInput.value.trim();
+        if (!message) return;
+        addMessage(message, 'user');
+        chatInput.value = '';
+        showTypingIndicator();
+        setTimeout(() => {
+            removeTypingIndicator();
+            const response = generateAIResponse(message);
+            addMessage(response, 'bot');
+        }, 1000 + Math.random() * 1500);
+    }
+
+    function addMessage(text, sender) {
+        const message = document.createElement('div');
+        message.classList.add('message', `${sender}-message`);
+        message.textContent = text;
+        messagesContainer.appendChild(message);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function showTypingIndicator() {
+        const typing = document.createElement('div');
+        typing.className = 'typing-indicator';
+        typing.id = 'typing-indicator';
+        typing.innerHTML = '<span></span><span></span><span></span>';
+        messagesContainer.appendChild(typing);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function removeTypingIndicator() {
+        const typing = document.getElementById('typing-indicator');
+        if (typing) typing.remove();
+    }
+
+    function generateAIResponse(input) {
+        const lower = input.toLowerCase();
+        if (lower.includes("menu")) return "You can explore our delicious Tamil menu above or visit the Menu section.";
+        if (lower.includes("hours")) return "We’re open daily from 8 AM to 10 PM.";
+        if (lower.includes("reservation")) return "Please call us at +971 50 123 4567 to make a reservation.";
+        if (lower.includes("location")) return "We're located at 123 Food Street, Al Nahda, Sharjah, UAE.";
+        return "I'm here to help with anything about our restaurant! Try asking about our menu or location.";
+    }
+
+    document.querySelectorAll('.quick-reply-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const text = this.textContent;
+            addMessage(text, 'user');
+            showTypingIndicator();
+            setTimeout(() => {
+                removeTypingIndicator();
+                const reply = generateAIResponse(text);
+                addMessage(reply, 'bot');
+            }, 1000 + Math.random() * 1500);
+        });
+    });
+
+    setTimeout(() => {
+        addMessage("Hello! I'm your AI restaurant assistant. Ask me about our menu, hours, or reservations!", 'bot');
+    }, 1500);
+});
+</script>
+
 </body>
 </html>
