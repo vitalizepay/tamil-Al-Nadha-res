@@ -913,7 +913,7 @@
                 <p>A thin, crispy pancake made from fermented batter, served with sambar and chutneys.</p>
             </div>
             <div class="gallery-item animate__animated animate__fadeInUp animate__delay-1s">
-                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Soft Idli with Sambar" class="food-img">
+                <img src="dosa.jpg" alt="Soft Idli with Sambar" class="food-img">
                 <h3>Idli & Sambar</h3>
                 <p>Steamed rice cakes, soft and fluffy, paired with a flavorful lentil-vegetable stew.</p>
             </div>
@@ -968,13 +968,22 @@
             </div>
             <div class="filter-buttons">
                 <button class="filter-btn active" data-category="all">All</button>
-                <button class="filter-btn" data-category="Breakfast">Breakfast</button>
-                <button class="filter-btn" data-category="Dosas">Dosas</button>
-                <button class="filter-btn" data-category="Seafood">Seafood</button>
-                <button class="filter-btn" data-category="Soups">Soups</button>
-                <button class="filter-btn" data-category="Beverages">Beverages</button>
-                <button class="filter-btn" data-category="Vegetarian">Vegetarian</button>
-                <button class="filter-btn" data-category="Non-Veg">Non-Veg</button>
+                <button class="filter-btn" data-category="Veg Gravy">Veg Gravy</button>
+                <button class="filter-btn" data-category="Chicken">Chicken</button>
+                <button class="filter-btn" data-category="Mutton">Mutton</button>
+                <button class="filter-btn" data-category="Noodles">Noodles</button>
+                <button class="filter-btn" data-category="Vegetable Dishes">Vegetable Dishes</button>
+                <button class="filter-btn" data-category="Thali">Thali</button>
+                <button class="filter-btn" data-category="Special Dum Biriyani">Special Dum Biriyani</button>
+                <button class="filter-btn" data-category="Fried Rice">Fried Rice</button>
+                <button class="filter-btn" data-category="Sea Foods">Sea Foods</button>
+                <button class="filter-btn" data-category="Egg Dishes">Egg Dishes</button>
+                <button class="filter-btn" data-category="Soup">Soup</button>
+<button class="filter-btn" data-category="Hot & Cold Drinks">Hot & Cold Drinks</button>
+                <button class="filter-btn" data-category="FNR Special">FNR Special</button>
+                <button class="filter-btn" data-category="Dinner">Dinner</button>
+
+
             </div>
         </div>
         
@@ -1025,57 +1034,160 @@
     <script>
         // Enhanced menu data with categories and vegetarian info
         const menuItems = [
-            { id: 1, name: "Idli (3 Pcs)", price: 6, category: "Breakfast", veg: true },
-            { id: 2, name: "Idli Vada", price: 5, category: "Breakfast", veg: true },
-            { id: 3, name: "Vada (3 Pcs)", price: 6, category: "Breakfast", veg: true },
-            { id: 4, name: "Sambar Vada (1 Pc)", price: 5, category: "Breakfast", veg: true },
-            { id: 5, name: "Pongal + Vada", price: 7, category: "Breakfast", veg: true },
-            { id: 6, name: "Set Dosa (2 Pcs)", price: 6, category: "Dosas", veg: true },
-            { id: 7, name: "Poori Set (Breakfast)", price: 6, category: "Breakfast", veg: true },
-            { id: 8, name: "Idiyappam", price: 5, category: "Breakfast", veg: true },
-            { id: 9, name: "Plain Roast", price: 6, category: "Dosas", veg: true },
-            { id: 10, name: "Ghee Roast", price: 7, category: "Dosas", veg: true },
-            { id: 11, name: "Onion Roast", price: 7, category: "Dosas", veg: true },
-            { id: 12, name: "Rava Upma", price: 5, category: "Breakfast", veg: true },
-            { id: 13, name: "Semiya Khichadi", price: 6, category: "Breakfast", veg: true },
-            { id: 14, name: "Mysore Masala Dosa", price: 8, category: "Dosas", veg: true },
-            { id: 15, name: "Butter Masala Dosa", price: 8, category: "Dosas", veg: true },
-            { id: 16, name: "Paneer Dosa", price: 8, category: "Dosas", veg: true },
-            { id: 17, name: "Rava Dosa", price: 7, category: "Dosas", veg: true },
-            { id: 18, name: "Onion Rava", price: 8, category: "Dosas", veg: true },
-            { id: 19, name: "Rava Masala Dosa", price: 8, category: "Dosas", veg: true },
-            { id: 20, name: "Egg Dosa", price: 7, category: "Dosas", veg: false },
-            { id: 21, name: "Onion Uthappam", price: 7, category: "Dosas", veg: true },
-            { id: 22, name: "Tomato Uthappam", price: 7, category: "Dosas", veg: true },
-            { id: 23, name: "Masala Uthappam", price: 7, category: "Dosas", veg: true },
-            { id: 24, name: "Mix Uthappam", price: 8, category: "Dosas", veg: true },
-            { id: 25, name: "Podi Dosa", price: 7, category: "Dosas", veg: true },
-            { id: 26, name: "Fish Masala", price: 12, category: "Seafood", veg: false },
-            { id: 27, name: "Fish Fry (King Fish)", price: 12, category: "Seafood", veg: false },
-            { id: 28, name: "Sherry Fry", price: 12, category: "Seafood", veg: false },
-            { id: 29, name: "Fish Manchurian (Gravy)", price: 15, category: "Seafood", veg: false },
-            { id: 30, name: "Fish Chilly (Dry/Gravy)", price: 14, category: "Seafood", veg: false },
-            { id: 31, name: "Ayala Fish Fry", price: 12, category: "Seafood", veg: false },
-            { id: 32, name: "Prawns Masala", price: 15, category: "Seafood", veg: false },
-            { id: 33, name: "Prawns Dry Fry", price: 15, category: "Seafood", veg: false },
-            { id: 34, name: "Prawns Ginger", price: 15, category: "Seafood", veg: false },
-            { id: 35, name: "Egg Masala/Egg Roast", price: 8, category: "Non-Veg", veg: false },
-            { id: 36, name: "Egg Bhurji", price: 6, category: "Non-Veg", veg: false },
-            { id: 37, name: "Vegetable Soup", price: 5, category: "Soups", veg: true },
-            { id: 38, name: "Chicken Soup", price: 8, category: "Soups", veg: false },
-            { id: 39, name: "Mutton Soup", price: 10, category: "Soups", veg: false },
-            { id: 40, name: "Tea", price: 1, category: "Beverages", veg: true },
-            { id: 41, name: "Coffee Fresh Milk", price: 3, category: "Beverages", veg: true },
-            { id: 42, name: "Mineral Water (S/L)", price: 1, category: "Beverages", veg: true },
-            { id: 43, name: "Soft Drinks", price: 2.5, category: "Beverages", veg: true },
-            { id: 44, name: "Badam Milk (Hot)", price: 3, category: "Beverages", veg: true },
-            { id: 45, name: "Chettinadu Chicken", price: 13, category: "Non-Veg", veg: false },
-            { id: 46, name: "Prawn Dosa", price: 10, category: "Seafood", veg: false },
-            { id: 47, name: "Nandu Masala (Crab)", price: 12, category: "Seafood", veg: false },
-            { id: 48, name: "Mutton Boti Masala", price: 10, category: "Non-Veg", veg: false },
-            { id: 49, name: "Mutton Liver Masala", price: 10, category: "Non-Veg", veg: false },
-            { id: 50, name: "Mini Tiffin (All in 1 Plate)", price: 9, category: "Breakfast", veg: true }
-        ];
+            { id: 1, name: "Green Peas Masala (3 Pcs)", price: 7, category: "Veg Gravy", veg: true },
+            { id: 2, name: "Gobi Masala", price: 11, category: "Veg Gravy", veg: true },
+            { id: 3, name: "Mushroom Masala", price: 12, category: "Veg Gravy", veg: true },
+            { id: 4, name: "Mushroom Chilli", price: 12, category: "Veg Gravy", veg: true },
+            { id: 5, name: "Mushroom Munchurian", price: 13, category: "Veg Gravy", veg: true },
+            { id: 6, name: "Kadai Paneer", price: 12, category: "Veg Gravy", veg: true },
+            { id: 7, name: "Mutter Paneer", price: 11, category: "Veg Gravy", veg: true },
+            { id: 8, name: "Dal Fry", price: 8, category: "Veg Gravy", veg: true },
+            { id: 9, name: "Dal Tadka", price: 10, category: "Veg Gravy", veg: true },
+            { id: 10, name: "Dal Kichadi", price: 10, category: "Veg Gravy", veg: true },
+
+
+            { id: 11, name: "Chilly Chicken(Dry)", price: 12, category: "Chicken", veg: false },
+            { id: 12, name: "Chilly Chicken(Gravy)", price: 12, category: "Chicken", veg: false },
+            { id: 13, name: "Chicken Masala", price: 12, category: "Chicken", veg: true },
+            { id: 14, name: "Chicken Curry", price: 12, category: "Chicken", veg: true },
+            { id: 15, name: "Chicken Roast Dry", price: 12, category: "Chicken", veg: false },
+            { id: 16, name: "Chicken 65", price: 12, category: "Chicken", veg: true },
+            { id: 17, name: "Chicken Pallipalayam", price: 12, category: "Chicken", veg: false },
+            { id: 18, name: "Chicken Sukka", price: 12, category: "Chicken", veg: true },
+            { id: 19, name: "Chicken Boneless 65", price: 12, category: "Chicken", veg: false },
+            { id: 20, name: "Chicken Kadai 65", price: 12, category: "Chicken", veg: false },
+            { id: 21, name: "Chicken Garlic", price: 12, category: "Chicken", veg: true },
+            { id: 22, name: "Chicken Butter Gravy", price: 12, category: "Chicken", veg: false },
+            { id: 23, name: "Chicken Pepper", price: 12, category: "Chicken", veg: true },
+            { id: 24, name: "Chicken Manchurian", price: 12, category: "Chicken", veg: false },
+
+
+            { id: 25, name: "Mutton Curry", price: 14, category: "Mutton", veg: false },
+            { id: 26, name: "Mutton Masala", price: 14, category: "Mutton", veg: false },
+            { id: 27, name: "Mutton Sukka", price: 14, category: "Mutton", veg: false },
+            { id: 28, name: "Mutton Kadai", price: 14, category: "Mutton", veg: false },
+            { id: 29, name: "Mutton Pepper Dry", price: 14, category: "Mutton", veg: false },
+            { id: 30, name: "Mutton Chilli", price: 14, category: "Mutton", veg: false },
+            { id: 31, name: "Mutton Pepper Gravy", price: 14, category: "Mutton", veg: false },
+            { id: 32, name: "Mutton Chetinadu", price: 14, category: "Mutton", veg: false },
+
+
+
+            { id: 33, name: "Prawns Noodles", price: 16, category: "Noodles", veg: false },
+            { id: 34, name: "Schezwan Veg Noodles", price: 12, category: "Noodles", veg: true },
+            { id: 35, name: "Schezwan Egg Noodles", price: 13, category: "Noodles", veg: false },
+            { id: 36, name: "Schezwan Chicken Noodles", price: 14, category: "Noodles", veg: false },
+            { id: 37, name: "Schezwan Mutton Noodles", price: 16, category: "Noodles", veg: false },
+
+
+
+            { id: 38, name: "Gobi Manchurian Dry", price: 12, category: "Vegetable Dishes", veg: true },
+            { id: 39, name: "Gobi Manchurian Gravy", price: 12, category: "Vegetable Dishes", veg: true },
+            { id: 40, name: "Gobi Chilli Dry", price: 12, category: "Vegetable Dishes", veg: true },
+            { id: 41, name: "Gobi Chilli Gravy", price: 12, category: "Vegetable Dishes", veg: true },
+            { id: 42, name: "Gobi 65", price: 12, category: "Vegetable Dishes", veg: true },
+            { id: 43, name: "Channa Masala", price: 7, category: "Vegetable Dishes", veg: true },
+            { id: 44, name: "Mix Vegetable", price: 7, category: "Vegetable Dishes", veg: true },
+            { id: 45, name: "Paneer Masala", price: 11, category: "Vegetable Dishes", veg: true },
+
+
+            { id: 46, name: "South Indian Thali(Veg)", price: 11, category: "Thali", veg: true },
+            { id: 47, name: "South Indian Thali(Chicken/Fish)", price: 13, category: "Thali", veg: false },
+            { id: 48, name: "Variety Rice", price: 8, category: "Thali", veg: true },
+
+
+            { id: 49, name: "Chicken 65 Biriyani", price: 16, category: "Special Dum Biriyani", veg: false },
+            { id: 50, name: "Chicken Biriyani", price: 14, category: "Special Dum Biriyani", veg: false },
+{ id: 51, name: "Mutton Biriyani", price: 16, category: "Special Dum Biriyani", veg: false },
+            { id: 52, name: "Egg Biriyani", price: 12, category: "Special Dum Biriyani", veg: false },
+{ id: 53, name: "Prawns Biriyani", price: 18, category: "Special Dum Biriyani", veg: false },
+            { id: 54, name: "Fish Biriyani", price: 17, category: "Special Dum Biriyani", veg: false },
+{ id: 55, name: "Plain Biriyani", price: 11, category: "Special Dum Biriyani", veg: false },
+
+
+            { id: 56, name: "Veg Fried Rice", price: 9, category: "Fried Rice", veg: true },
+            { id: 57, name: "Jeera Rice", price: 9, category: "Fried Rice", veg: true },
+            { id: 58, name: "Ghee Rice", price: 9, category: "Fried Rice", veg: true },
+            { id: 59, name: "Gobi Fried Rice", price: 9, category: "Fried Rice", veg: true },
+            { id: 60, name: "Ginger Fried Rice", price: 9, category: "Fried Rice", veg: true },
+            { id: 61, name: "Egg Fried Rice", price: 9, category: "Fried Rice", veg: false },
+            { id: 62, name: "Chicken Fried Rice", price: 9, category: "Fried Rice", veg: false },
+            { id: 63, name: "Mutton Fried Rice", price: 9, category: "Fried Rice", veg: false },
+            { id: 64, name: "Mix Fried Rice", price: 9, category: "Fried Rice", veg: false },
+            { id: 65, name: "Schezwan Egg Fried Rice", price: 9, category: "Fried Rice", veg: false },
+            { id: 67, name: "Schezwan Chicken Fried Rice", price: 9, category: "Fried Rice", veg: false },
+            { id: 68, name: "Schezwan Mutton Fried Rice", price: 9, category: "Fried Rice", veg: false },
+            { id: 69, name: "Prawns Fried Rice", price: 9, category: "Fried Rice", veg: false },
+
+
+            { id: 66, name: "Veg Noodles", price: 11, category: "Noodles", veg: true },
+            { id: 70, name: "Egg Noodles", price: 12, category: "Noodles", veg: false },
+            { id: 71, name: "Mix Noodles", price: 16, category: "Noodles", veg: false },
+            { id: 72, name: "Chicken Noodles", price: 13, category: "Noodles", veg: false },
+            { id: 73, name: "Mutton Noodles", price: 15, category: "Noodles", veg: false },
+
+
+            { id: 74, name: "Fish Masala", price: 9, category: "Sea Foods", veg: false },
+            { id: 75, name: "Fish Fry", price: 15, category: "Sea Foods", veg: false },
+            { id: 76, name: "Sherry Fry", price: 15, category: "Sea Foods", veg: false },
+            { id: 77, name: "Fish Manchurian", price: 15, category: "Sea Foods", veg: false },
+            { id: 78, name: "Fish Chilli", price: 14, category: "Sea Foods", veg: false },
+            { id: 79, name: "Ayala Fish Fry", price: 15, category: "Sea Foods", veg: false },
+            { id: 80, name: "Nethili Fish", price: 12, category: "Sea Foods", veg: false },
+            { id: 81, name: "Prawns Masala", price: 15, category: "Sea Foods", veg: false },
+            { id: 82, name: "Prawns 65", price: 15, category: "Sea Foods", veg: false },
+	    { id: 83, name: "Prawns Ginger", price: 15, category: "Sea Foods", veg: false },
+            { id: 84, name: "Prawns Sukka", price: 15, category: "Sea Foods", veg: false },
+
+
+            { id: 85, name: "Egg Masala", price: 8, category: "Egg Dishes", veg: false },
+            { id: 86, name: "Egg Roast", price: 8, category: "Egg Dishes", veg: false },
+            { id: 87, name: "Egg Bhurji", price: 6, category: "Egg Dishes", veg: false },
+
+
+            { id: 88, name: "Veg Soup", price: 5, category: "Soup", veg: true },
+            { id: 89, name: "Chicken Soup", price: 5, category: "Soup", veg: false },
+            { id: 90, name: "Mutton Soup", price: 6, category: "Soup", veg: false },
+            { id: 91, name: "Nandu Soup", price: 12, category: "Soup", veg: false },
+
+
+            { id: 92, name: "Tea", price: 1, category: "Hot & Cold Drinks", veg: true },
+            { id: 93, name: "Coffee", price: 3, category: "Hot & Cold Drinks", veg: true },            
+	    { id: 94, name: "Fresh Milk", price: 2, category: "Hot & Cold Drinks", veg: true },
+            { id: 95, name: "Soft drinks", price: 3, category: "Hot & Cold Drinks", veg: true },
+            { id: 96, name: "Badam Milk (H)", price: 3, category: "Hot & Cold Drinks", veg: true },
+            { id: 97, name: "Sukku Coffee", price: 2, category: "Hot & Cold Drinks", veg: true },
+            { id: 98, name: "Mineral Water", price: 1, category: "Hot & Cold Drinks", veg: true },
+
+
+            { id: 99, name: "Chetinadu Chicken", price: 13, category: "FNR Special", veg: false },
+	    { id: 100, name: "Nandu Masala (Crab)", price: 12, category: "FNR Special", veg: false },
+            { id: 101, name: "Mutton Boti Masala", price: 11, category: "FNR Special", veg: false },
+            { id: 102, name: "Mutton Liver Masala", price: 12, category: "FNR Special", veg: false },
+
+
+            { id: 103, name: "Parotta", price: 1, category: "Dinner", veg: true },
+	    { id: 104, name: "Parotta Set(2Pcs)", price: 5, category: "Dinner", veg: true },
+            { id: 105, name: "Wheat Parotta", price: 2, category: "Dinner", veg: true },
+            { id: 106, name: "Wheat Parotta Set(2Pcs)", price: 7, category: "Dinner", veg: true },            
+	    { id: 107, name: "Chappathi", price: 1, category: "Dinner", veg: true },
+	    { id: 108, name: "Chappathi Set(2Pcs)", price: 5, category: "Dinner", veg: true },
+            { id: 109, name: "Egg Lappa", price: 7, category: "Dinner", veg: false },
+            { id: 110, name: "Veche Plain Parotta", price: 3, category: "Dinner", veg: true },           
+            { id: 111, name: "Egg Veche Parotta", price: 5, category: "Dinner", veg: false },
+	    { id: 112, name: "Egg Kothu Parotta", price: 12, category: "Dinner", veg: false },
+            { id: 113, name: "Kothu Parotta Vegetable", price: 11, category: "Dinner", veg: true },
+            { id: 114, name: "Kothu Parotta Chicken", price: 12, category: "Dinner", veg: false },           
+ 	    { id: 115, name: "Kothu Parotta Mutton", price: 14, category: "Dinner", veg: false },
+	    { id: 116, name: "Kothu Parotta Prawn", price: 15, category: "Dinner", veg: false },
+            { id: 117, name: "Mix Kothu Parotta", price: 15, category: "Dinner", veg: false },
+            { id: 118, name: "Chilli Parotta Chicken", price: 13, category: "Dinner", veg: false },          
+	    { id: 119, name: "Chilli Parotta Vegetable", price: 11, category: "Dinner", veg: false },
+	    { id: 120, name: "Chilli Parotta Mutton", price: 14, category: "Dinner", veg: false },
+            { id: 121, name: "Chicken Lappa", price: 8, category: "Dinner", veg: false },
+            { id: 122, name: "Chicken Murthaba", price: 10, category: "Dinner", veg: false },
+       ];
+
 
         // DOM Elements
         const menuContainer = document.getElementById('menu-items');
