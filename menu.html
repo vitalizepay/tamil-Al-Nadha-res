@@ -1,8 +1,631 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Menu</title><link rel="stylesheet" href="styles.css"></head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Menu - Tamil Food Restaurant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Add styles from index.html's <style> block related to navigation or common elements */
+    :root {
+        --primary: #d35400;
+        --secondary: #e67e22;
+        --light: #f5f5f5;
+        --dark: #333;
+        --success: #27ae60;
+        --whatsapp: #25D366;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    body {
+        background-color: #f9f9f9; /* Changed to match index.html body background */
+        color: var(--dark);
+        line-height: 1.6;
+        padding-top: 80px; /* To account for fixed nav */
+    }
+
+    h1, h2, h3, h4 {
+        font-family: 'Lora', serif;
+    }
+
+    /* Navigation */
+    nav {
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        transition: all 0.3s ease;
+    }
+
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+    }
+
+    .logo a {
+        font-family: 'Lora', serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        text-decoration: none;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+    }
+
+    .nav-links li {
+        margin-left: 2rem;
+    }
+
+    .nav-links a {
+        color: var(--dark);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s;
+        position: relative;
+    }
+
+    .nav-links a:hover {
+        color: var(--primary);
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        bottom: -5px;
+        left: 0;
+        transition: width 0.3s;
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+    /* Existing menu.html specific styles */
+    .category {
+      margin-bottom: 2rem;
+      background: white; /* Added to match other sections */
+      padding: 1rem 2rem; /* Added padding */
+      border-radius: 8px; /* Added border-radius */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Added shadow */
+    }
+    .category h2 {
+      color: var(--primary); /* Changed to primary color */
+      border-bottom: 2px solid var(--secondary); /* Changed border color */
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem; /* Added margin */
+      font-size: 1.8rem; /* Adjusted font size */
+    }
+    .item {
+      margin-left: 1rem;
+      margin-bottom: 0.4rem;
+      font-size: 1.1rem; /* Adjusted font size */
+      color: var(--dark);
+    }
+    .item span.price {
+        font-weight: 600;
+        color: var(--primary);
+    }
+    .menu-content-wrapper {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 2rem;
+    }
+    h1 {
+        color: var(--primary);
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 3rem;
+    }
+    @media (max-width: 768px) {
+        .nav-container {
+            flex-direction: column;
+            padding: 1rem;
+        }
+
+        .nav-links {
+            margin-top: 1rem;
+        }
+
+        .nav-links li {
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+        h1 {
+            font-size: 2rem;
+        }
+        .category h2 {
+            font-size: 1.5rem;
+        }
+        .item {
+            font-size: 1rem;
+        }
+    }
+    /* Chatbot Styles */
+    .floating-chat-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background: #2c3e50;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        z-index: 999;
+        transition: all 0.3s ease;
+    }
+    .floating-chat-btn:hover {
+        background: #1a252f;
+        transform: scale(1.1);
+    }
+    .chatbot-container {
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        width: 350px;
+        height: 450px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        transform: translateY(20px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 1000;
+    }
+    .chatbot-container.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    .chatbot-header {
+        background: #2c3e50;
+        color: white;
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .chatbot-close-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .chatbot-messages {
+        flex: 1;
+        padding: 15px;
+        overflow-y: auto;
+        background: #f9f9f9;
+    }
+    .chatbot-input {
+        display: flex;
+        padding: 10px;
+        border-top: 1px solid #eee;
+        background: white;
+    }
+    .chatbot-text-input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        outline: none;
+    }
+    .chatbot-send-btn {
+        margin-left: 10px;
+        padding: 10px 15px;
+        background: #2c3e50;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+    .chatbot-quick-replies {
+        padding: 10px;
+        border-top: 1px solid #eee;
+        background: #f5f5f5;
+    }
+    .chatbot-quick-replies p {
+        margin: 0 0 8px 0;
+        font-size: 12px;
+        color: #666;
+    }
+    .quick-reply-btn {
+        margin: 0 5px 5px 0;
+        padding: 5px 10px;
+        background: #e3f2fd;
+        border: 1px solid #bbdefb;
+        border-radius: 15px;
+        font-size: 12px;
+        cursor: pointer;
+    }
+    .quick-reply-btn:hover {
+        background: #bbdefb;
+    }
+    .message {
+        margin-bottom: 15px;
+        padding: 10px 15px;
+        border-radius: 18px;
+        max-width: 80%;
+        word-wrap: break-word;
+    }
+    .user-message {
+        background: #e3f2fd;
+        margin-left: auto;
+        border-bottom-right-radius: 5px;
+    }
+    .bot-message {
+        background: #f1f1f1;
+        margin-right: auto;
+        border-bottom-left-radius: 5px;
+    }
+    .typing-indicator {
+        display: inline-block;
+        padding: 10px 15px;
+        background: #f1f1f1;
+        border-radius: 18px;
+        margin-bottom: 15px;
+        border-bottom-left-radius: 5px;
+    }
+    .typing-indicator span {
+        height: 8px;
+        width: 8px;
+        background: #666;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 0 2px;
+        animation: typing 1s infinite ease-in-out;
+    }
+    .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+    }
+  </style>
+</head>
 <body>
-<header><h1>Our Menu</h1><nav><a href="index.html">Home</a><a href="cart.html">Cart</a></nav></header>
-<main><section id="menu-items"></section></main><script src="script.js"></script>
-</body></html>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">Tamil Food Restaurant</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="index.html#location-section">Location</a></li>
+            </ul>
+        </div>
+    </nav>
+
+  <h1>Our Full Menu</h1>
+  <div class="menu-content-wrapper">
+    <div id="menu-section"></div>
+  </div>
+
+  <script>
+    const menuItems = [
+      { id: 1, name: "Green Peas Masala (3 Pcs)", price: 7, category: "Veg Gravy" },
+      { id: 2, name: "Gobi Masala", price: 11, category: "Veg Gravy" },
+      { id: 3, name: "Mushroom Masala", price: 12, category: "Veg Gravy" },
+      { id: 4, name: "Mushroom Chilli", price: 12, category: "Veg Gravy" },
+      { id: 5, name: "Mushroom Munchurian", price: 13, category: "Veg Gravy" },
+      { id: 6, name: "Kadai Paneer", price: 12, category: "Veg Gravy" },
+      { id: 7, name: "Mutter Paneer", price: 11, category: "Veg Gravy" },
+      { id: 8, name: "Dal Fry", price: 8, category: "Veg Gravy" },
+      { id: 9, name: "Dal Tadka", price: 10, category: "Veg Gravy" },
+      { id: 10, name: "Dal Kichadi", price: 10, category: "Veg Gravy" },
+      { id: 11, name: "Chilly Chicken(Dry)", price: 12, category: "Chicken" },
+      { id: 12, name: "Chilly Chicken(Gravy)", price: 12, category: "Chicken" },
+      { id: 13, name: "Chicken Masala", price: 12, category: "Chicken" },
+      { id: 14, name: "Chicken Curry", price: 12, category: "Chicken" },
+      { id: 15, name: "Chicken Roast Dry", price: 12, category: "Chicken" },
+      { id: 16, name: "Chicken 65", price: 12, category: "Chicken" },
+      { id: 17, name: "Chicken Pallipalayam", price: 12, category: "Chicken" },
+      { id: 18, name: "Chicken Sukka", price: 12, category: "Chicken" },
+      { id: 19, name: "Chicken Boneless 65", price: 12, category: "Chicken" },
+      { id: 20, name: "Chicken Kadai 65", price: 12, category: "Chicken" },
+      { id: 21, name: "Chicken Garlic", price: 12, category: "Chicken" },
+      { id: 22, name: "Chicken Butter Gravy", price: 12, category: "Chicken" },
+      { id: 23, name: "Chicken Pepper", price: 12, category: "Chicken" },
+      { id: 24, name: "Chicken Manchurian", price: 12, category: "Chicken" },
+      { id: 25, name: "Mutton Curry", price: 14, category: "Mutton" },
+      { id: 26, name: "Mutton Masala", price: 14, category: "Mutton" },
+      { id: 27, name: "Mutton Sukka", price: 14, category: "Mutton" },
+      { id: 28, name: "Mutton Kadai", price: 14, category: "Mutton" },
+      { id: 29, name: "Mutton Pepper Dry", price: 14, category: "Mutton" },
+      { id: 30, name: "Mutton Chilli", price: 14, category: "Mutton" },
+      { id: 31, name: "Mutton Pepper Gravy", price: 14, category: "Mutton" },
+      { id: 32, name: "Mutton Chetinadu", price: 14, category: "Mutton" },
+      { id: 33, name: "Prawns Noodles", price: 16, category: "Noodles" },
+      { id: 34, name: "Schezwan Veg Noodles", price: 12, category: "Noodles" },
+      { id: 35, name: "Schezwan Egg Noodles", price: 13, category: "Noodles" },
+      { id: 36, name: "Schezwan Chicken Noodles", price: 14, category: "Noodles" },
+      { id: 37, name: "Schezwan Mutton Noodles", price: 16, category: "Noodles" },
+      { id: 66, name: "Veg Noodles", price: 11, category: "Noodles" },
+      { id: 70, name: "Egg Noodles", price: 12, category: "Noodles" },
+      { id: 71, name: "Mix Noodles", price: 16, category: "Noodles" },
+      { id: 72, name: "Chicken Noodles", price: 13, category: "Noodles" },
+      { id: 73, name: "Mutton Noodles", price: 15, category: "Noodles" },
+      { id: 56, name: "Veg Fried Rice", price: 9, category: "Fried Rice" },
+      { id: 61, name: "Egg Fried Rice", price: 9, category: "Fried Rice" },
+      { id: 62, name: "Chicken Fried Rice", price: 9, category: "Fried Rice" },
+      { id: 63, name: "Mutton Fried Rice", price: 9, category: "Fried Rice" },
+      { id: 64, name: "Mix Fried Rice", price: 9, category: "Fried Rice" },
+      { id: 65, name: "Schezwan Egg Fried Rice", price: 9, category: "Fried Rice" },
+      { id: 67, name: "Schezwan Chicken Fried Rice", price: 9, category: "Fried Rice" },
+      { id: 68, name: "Schezwan Mutton Fried Rice", price: 9, category: "Fried Rice" },
+      { id: 69, name: "Prawns Fried Rice", price: 9, category: "Fried Rice" },
+      { id: 49, name: "Chicken 65 Biriyani", price: 16, category: "Special Dum Biriyani" },
+      { id: 50, name: "Chicken Biriyani", price: 14, category: "Special Dum Biriyani" },
+      { id: 51, name: "Mutton Biriyani", price: 16, category: "Special Dum Biriyani" },
+      { id: 52, name: "Egg Biriyani", price: 12, category: "Special Dum Biriyani" },
+      { id: 53, name: "Prawns Biriyani", price: 18, category: "Special Dum Biriyani" },
+      { id: 54, name: "Fish Biriyani", price: 17, category: "Special Dum Biriyani" },
+      { id: 55, name: "Plain Biriyani", price: 11, category: "Special Dum Biriyani" },
+      // Added all menu items from index.html for comprehensive list
+      { id: 38, name: "Gobi Manchurian Dry", price: 12, category: "Vegetable Dishes" },
+      { id: 39, name: "Gobi Manchurian Gravy", price: 12, category: "Vegetable Dishes" },
+      { id: 40, name: "Gobi Chilli Dry", price: 12, category: "Vegetable Dishes" },
+      { id: 41, name: "Gobi Chilli Gravy", price: 12, category: "Vegetable Dishes" },
+      { id: 42, name: "Gobi 65", price: 12, category: "Vegetable Dishes" },
+      { id: 43, name: "Channa Masala", price: 7, category: "Vegetable Dishes" },
+      { id: 44, name: "Mix Vegetable", price: 7, category: "Vegetable Dishes" },
+      { id: 45, name: "Paneer Masala", price: 11, category: "Vegetable Dishes" },
+      { id: 46, name: "South Indian Thali(Veg)", price: 11, category: "Thali" },
+      { id: 47, name: "South Indian Thali(Chicken/Fish)", price: 13, category: "Thali" },
+      { id: 48, name: "Variety Rice", price: 8, category: "Thali" },
+      { id: 57, name: "Jeera Rice", price: 9, category: "Fried Rice" },
+      { id: 58, name: "Ghee Rice", price: 9, category: "Fried Rice" },
+      { id: 59, name: "Gobi Fried Rice", price: 9, category: "Fried Rice" },
+      { id: 60, name: "Ginger Fried Rice", price: 9, category: "Fried Rice" },
+      { id: 74, name: "Fish Masala", price: 9, category: "Sea Foods" },
+      { id: 75, name: "Fish Fry", price: 15, category: "Sea Foods" },
+      { id: 76, name: "Sherry Fry", price: 15, category: "Sea Foods" },
+      { id: 77, name: "Fish Manchurian", price: 15, category: "Sea Foods" },
+      { id: 78, name: "Fish Chilli", price: 14, category: "Sea Foods" },
+      { id: 79, name: "Ayala Fish Fry", price: 15, category: "Sea Foods" },
+      { id: 80, name: "Nethili Fish", price: 12, category: "Sea Foods" },
+      { id: 81, name: "Prawns Masala", price: 15, category: "Sea Foods" },
+      { id: 82, name: "Prawns 65", price: 15, category: "Sea Foods" },
+      { id: 83, name: "Prawns Ginger", price: 15, category: "Sea Foods" },
+      { id: 84, name: "Prawns Sukka", price: 15, category: "Sea Foods" },
+      { id: 85, name: "Egg Masala", price: 8, category: "Egg Dishes" },
+      { id: 86, name: "Egg Roast", price: 8, category: "Egg Dishes" },
+      { id: 87, name: "Egg Bhurji", price: 6, category: "Egg Dishes" },
+      { id: 88, name: "Veg Soup", price: 5, category: "Soup" },
+      { id: 89, name: "Chicken Soup", price: 5, category: "Soup" },
+      { id: 90, name: "Mutton Soup", price: 6, category: "Soup" },
+      { id: 91, name: "Nandu Soup", price: 12, category: "Soup" },
+      { id: 92, name: "Tea", price: 1, category: "Hot & Cold Drinks" },
+      { id: 93, name: "Coffee", price: 3, category: "Hot & Cold Drinks" },
+      { id: 94, name: "Fresh Milk", price: 2, category: "Hot & Cold Drinks" },
+      { id: 95, name: "Soft drinks", price: 3, category: "Hot & Cold Drinks" },
+      { id: 96, name: "Badam Milk (H)", price: 3, category: "Hot & Cold Drinks" },
+      { id: 97, name: "Sukku Coffee", price: 2, category: "Hot & Cold Drinks" },
+      { id: 98, name: "Mineral Water", price: 1, category: "Hot & Cold Drinks" },
+      { id: 99, name: "Chetinadu Chicken", price: 13, category: "FNR Special" },
+      { id: 100, name: "Nandu Masala (Crab)", price: 12, category: "FNR Special" },
+      { id: 101, name: "Mutton Boti Masala", price: 11, category: "FNR Special" },
+      { id: 102, name: "Mutton Liver Masala", price: 12, category: "FNR Special" },
+      { id: 103, name: "Parotta", price: 1, category: "Dinner" },
+      { id: 104, name: "Parotta Set(2Pcs)", price: 5, category: "Dinner" },
+      { id: 105, name: "Wheat Parotta", price: 2, category: "Dinner" },
+      { id: 106, name: "Wheat Parotta Set(2Pcs)", price: 7, category: "Dinner" },
+      { id: 107, name: "Chappathi", price: 1, category: "Dinner" },
+      { id: 108, name: "Chappathi Set(2Pcs)", price: 5, category: "Dinner" },
+      { id: 109, name: "Egg Lappa", price: 7, category: "Dinner" },
+      { id: 110, name: "Veche Plain Parotta", price: 3, category: "Dinner" },
+      { id: 111, name: "Egg Veche Parotta", price: 5, category: "Dinner" },
+      { id: 112, name: "Egg Kothu Parotta", price: 12, category: "Dinner" },
+      { id: 113, name: "Kothu Parotta Vegetable", price: 11, category: "Dinner" },
+      { id: 114, name: "Kothu Parotta Chicken", price: 12, category: "Dinner" },
+      { id: 115, name: "Kothu Parotta Mutton", price: 14, category: "Dinner" },
+      { id: 116, name: "Kothu Parotta Prawn", price: 15, category: "Dinner" },
+      { id: 117, name: "Mix Kothu Parotta", price: 15, category: "Dinner" },
+      { id: 118, name: "Chilli Parotta Chicken", price: 13, category: "Dinner" },
+      { id: 119, name: "Chilli Parotta Vegetable", price: 11, category: "Dinner" },
+      { id: 120, name: "Chilli Parotta Mutton", price: 14, category: "Dinner" },
+      { id: 121, name: "Chicken Lappa", price: 8, category: "Dinner" },
+      { id: 122, name: "Chicken Murthaba", price: 10, category: "Dinner" },
+    ];
+
+    const container = document.getElementById('menu-section');
+    const grouped = {};
+
+    // Group by category
+    menuItems.forEach(item => {
+      if (!grouped[item.category]) grouped[item.category] = [];
+      grouped[item.category].push(item);
+    });
+
+    // Render each group
+    Object.entries(grouped).forEach(([category, items]) => {
+      const catDiv = document.createElement('div');
+      catDiv.className = 'category';
+
+      const title = document.createElement('h2');
+      title.textContent = category;
+      catDiv.appendChild(title);
+
+      items.forEach(item => {
+        const itemP = document.createElement('div');
+        itemP.className = 'item';
+        itemP.innerHTML = `${item.name} - <span class="price">AED ${item.price.toFixed(2)}</span>`;
+        catDiv.appendChild(itemP);
+      });
+
+      container.appendChild(catDiv);
+    });
+  </script>
+<div class="floating-chat-btn" id="floating-chat-btn">
+    <i class="fas fa-comments"></i>
+</div>
+
+<div class="chatbot-container" id="chatbot-container">
+    <div class="chatbot-header">
+        <h3>Restaurant AI Assistant</h3>
+        <button class="chatbot-close-btn">×</button>
+    </div>
+    <div class="chatbot-messages" id="chatbot-messages"></div>
+    <div class="chatbot-input">
+        <input type="text" placeholder="Type your message..." class="chatbot-text-input" id="chatbot-input">
+        <button class="chatbot-send-btn">Send</button>
+    </div>
+    <div class="chatbot-quick-replies">
+        <p>Quick questions:</p>
+        <button class="quick-reply-btn">What's on the menu?</button>
+        <button class="quick-reply-btn">How to make reservation?</button>
+        <button class="quick-reply-btn">What are your hours?</button>
+        <button class="quick-reply-btn">Where are you located?</button>
+    </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const chatBtn = document.getElementById('floating-chat-btn');
+    const chatContainer = document.getElementById('chatbot-container');
+    const closeBtn = document.querySelector('.chatbot-close-btn');
+    const sendBtn = document.querySelector('.chatbot-send-btn');
+    const chatInput = document.getElementById('chatbot-input');
+    const messagesContainer = document.getElementById('chatbot-messages');
+
+    chatBtn.addEventListener('click', () => chatContainer.classList.toggle('active'));
+    closeBtn.addEventListener('click', () => chatContainer.classList.remove('active'));
+    sendBtn.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage();
+    });
+
+    function sendMessage() {
+        const message = chatInput.value.trim();
+        if (!message) return;
+        addMessage(message, 'user');
+        chatInput.value = '';
+        showTypingIndicator();
+        setTimeout(() => {
+            removeTypingIndicator();
+            const response = generateAIResponse(message);
+            addMessage(response, 'bot');
+        }, 1000 + Math.random() * 1500);
+    }
+
+    function addMessage(text, sender) {
+        const message = document.createElement('div');
+        message.classList.add('message', `${sender}-message`);
+        message.innerHTML = text; // Use innerHTML to render links and line breaks
+        messagesContainer.appendChild(message);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function showTypingIndicator() {
+        const typing = document.createElement('div');
+        typing.className = 'typing-indicator';
+        typing.id = 'typing-indicator';
+        typing.innerHTML = '<span></span><span></span><span></span>';
+        messagesContainer.appendChild(typing);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function removeTypingIndicator() {
+        const typing = document.getElementById('typing-indicator');
+        if (typing) typing.remove();
+    }
+
+   function generateAIResponse(input) {
+    const lower = input.toLowerCase();
+
+    // Menu Highlights & Full Menu
+    if (lower.includes("menu") || lower.includes("food") || lower.includes("dishes")) {
+        let fullMenuResponse = "Certainly! Here is our full menu:\n\n";
+
+        // Group menu items by category
+        const categorizedMenu = menuItems.reduce((acc, item) => {
+            if (!acc[item.category]) {
+                acc[item.category] = [];
+            }
+            acc[item.category].push(item);
+            return acc;
+        }, {});
+
+        // Format and append each category and its items
+        for (const category in categorizedMenu) {
+            fullMenuResponse += `*${category}*:\n`;
+            categorizedMenu[category].forEach(item => {
+                fullMenuResponse += `• ${item.name} - AED ${item.price.toFixed(2)}\n`;
+            });
+            fullMenuResponse += "\n"; // Add a line break after each category
+        }
+
+        fullMenuResponse += "You can also view the complete menu on our <a href='menu.html' target='_blank'>Menu Page</a>.";
+        return fullMenuResponse;
+    }
+
+    // Auto Search in Menu Items
+    const matches = menuItems.filter(item =>
+        item.name.toLowerCase().includes(lower)
+    );
+
+    if (matches.length > 0) {
+        const response = matches.slice(0, 10).map(item => `• ${item.name} - AED ${item.price.toFixed(2)}`).join('\n');
+        return `Here’s what I found for your search:\n\n${response}`;
+    }
+
+    // Other FAQs
+    if (lower.includes("hours") || lower.includes("timing")) return "🕗 We're open daily from 8 AM to 10 PM.";
+    if (lower.includes("reservation") || lower.includes("book") || lower.includes("table"))
+        return "📞 You can make a reservation by calling us at 06 522 0875 / 054 420 5511.";
+    if (lower.includes("location") || lower.includes("where")) return "📍 We're at Al Tahira Building, Shop No. 2, Al Nahda, Sharjah, UAE.";
+
+    return "I'm here to help with anything about our restaurant! Try asking about the menu, location, or hours.";
+    }
+
+    document.querySelectorAll('.quick-reply-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const text = this.textContent;
+            addMessage(text, 'user');
+            showTypingIndicator();
+            setTimeout(() => {
+                removeTypingIndicator();
+                const reply = generateAIResponse(text);
+                addMessage(reply, 'bot');
+            }, 1000 + Math.random() * 1500);
+        });
+    });
+
+    setTimeout(() => {
+        addMessage("Hello! I'm your AI restaurant assistant. Ask me about our menu, hours, or reservations!", 'bot');
+    }, 1500);
+});
+</script>
+
+</body>
+</html>

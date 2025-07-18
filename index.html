@@ -4,11 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Tamil Food Restaurant</title>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Animate.css for animations -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
         :root {
@@ -19,24 +16,24 @@
             --success: #27ae60;
             --whatsapp: #25D366;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Open Sans', sans-serif;
         }
-        
+
         body {
             background-color: #f9f9f9;
             color: var(--dark);
             line-height: 1.6;
         }
-        
+
         h1, h2, h3, h4 {
             font-family: 'Lora', serif;
         }
-        
+
         /* Navigation */
         nav {
             background-color: white;
@@ -47,7 +44,7 @@
             z-index: 1000;
             transition: all 0.3s ease;
         }
-        
+
         .nav-container {
             display: flex;
             justify-content: space-between;
@@ -56,7 +53,7 @@
             margin: 0 auto;
             padding: 1rem 2rem;
         }
-        
+
         .logo a {
             font-family: 'Lora', serif;
             font-size: 1.5rem;
@@ -64,16 +61,16 @@
             color: var(--primary);
             text-decoration: none;
         }
-        
+
         .nav-links {
             display: flex;
             list-style: none;
         }
-        
+
         .nav-links li {
             margin-left: 2rem;
         }
-        
+
         .nav-links a {
             color: var(--dark);
             text-decoration: none;
@@ -81,11 +78,11 @@
             transition: color 0.3s;
             position: relative;
         }
-        
+
         .nav-links a:hover {
             color: var(--primary);
         }
-        
+
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -96,11 +93,11 @@
             left: 0;
             transition: width 0.3s;
         }
-        
+
         .nav-links a:hover::after {
             width: 100%;
         }
-        
+
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
@@ -113,24 +110,24 @@
             padding-top: 80px;
             animation: fadeIn 1.5s ease-in-out;
         }
-        
+
         .hero-content {
             max-width: 800px;
             padding: 0 2rem;
         }
-        
+
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
-        
+
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
-        
+
         .btn {
             display: inline-block;
             background: var(--primary);
@@ -143,13 +140,13 @@
             border: none;
             cursor: pointer;
         }
-        
+
         .btn:hover {
             background: var(--secondary);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        
+
         /* Food Gallery */
         .food-gallery {
             padding: 5rem 2rem;
@@ -157,7 +154,7 @@
             margin: 0 auto;
             text-align: center;
         }
-        
+
         .food-gallery h2 {
             font-size: 2.5rem;
             margin-bottom: 3rem;
@@ -165,7 +162,7 @@
             position: relative;
             display: inline-block;
         }
-        
+
         .food-gallery h2::after {
             content: '';
             position: absolute;
@@ -175,14 +172,14 @@
             bottom: -10px;
             left: 25%;
         }
-        
+
         .gallery-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
-        
+
         .gallery-item {
             background: white;
             border-radius: 10px;
@@ -190,57 +187,57 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
         }
-        
+
         .gallery-item:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
-        
+
         .food-img {
             width: 100%;
             height: 200px;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-        
+
         .gallery-item:hover .food-img {
             transform: scale(1.05);
         }
-        
+
         .gallery-item h3 {
             margin: 1rem 0;
             color: var(--primary);
         }
-        
+
         .gallery-item p {
             padding: 0 1rem 1.5rem;
             color: #666;
         }
-        
+
         /* Location Section */
         .location {
             padding: 5rem 2rem;
             background: var(--light);
             text-align: center;
         }
-        
+
         .location h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
             color: var(--primary);
         }
-        
+
         .location p {
             margin-bottom: 2rem;
             font-size: 1.1rem;
         }
-        
+
         iframe {
             margin: 2rem 0;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        
+
         .contact-info {
             max-width: 600px;
             margin: 0 auto;
@@ -250,16 +247,16 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        
+
         .contact-info p {
             margin-bottom: 1rem;
             font-size: 1rem;
         }
-        
+
         .contact-info strong {
             color: var(--primary);
         }
-        
+
         /* Footer */
         footer {
             background: var(--dark);
@@ -268,7 +265,7 @@
             padding: 2rem;
             margin-top: 3rem;
         }
-        
+
         /* Menu Page Styles */
         .container {
             display: flex;
@@ -277,7 +274,7 @@
             margin: 5rem auto 2rem;
             padding: 1rem;
         }
-        
+
         .controls {
             display: flex;
             flex-wrap: wrap;
@@ -288,12 +285,12 @@
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-        
+
         .search-box {
             flex: 1;
             min-width: 200px;
         }
-        
+
         .search-box input {
             width: 100%;
             padding: 0.5rem;
@@ -301,13 +298,13 @@
             border-radius: 4px;
             font-size: 1rem;
         }
-        
+
         .filter-buttons {
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
         }
-        
+
         .filter-btn {
             padding: 0.5rem 1rem;
             border: none;
@@ -317,31 +314,31 @@
             transition: all 0.3s;
             font-size: 0.9rem;
         }
-        
+
         .filter-btn.active {
             background: var(--primary);
             color: white;
         }
-        
+
         .filter-btn:hover {
             background: #ddd;
         }
-        
+
         .filter-btn.active:hover {
             background: var(--secondary);
         }
-        
+
         .menu-container {
             display: flex;
             gap: 2rem;
             flex-wrap: wrap;
         }
-        
+
         .menu-items {
             flex: 3;
             min-width: 300px;
         }
-        
+
         .category {
             margin-bottom: 2rem;
             background: white;
@@ -350,44 +347,44 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             animation: fadeInUp 0.5s ease-out;
         }
-        
+
         .category-title {
             background: var(--primary);
             color: white;
             padding: 0.75rem 1rem;
             font-size: 1.2rem;
         }
-        
+
         .items-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1rem;
             padding: 1rem;
         }
-        
+
         .menu-item {
             border: 1px solid #eee;
             border-radius: 8px;
             padding: 1rem;
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        
+
         .menu-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        
+
         .menu-item h3 {
             margin-bottom: 0.5rem;
             color: var(--dark);
         }
-        
+
         .menu-item p {
             color: var(--primary);
             font-weight: bold;
             margin-bottom: 1rem;
         }
-        
+
         .add-to-cart {
             background: var(--primary);
             color: white;
@@ -398,11 +395,11 @@
             transition: background 0.3s;
             width: 100%;
         }
-        
+
         .add-to-cart:hover {
             background: var(--secondary);
         }
-        
+
         .cart-sidebar {
             flex: 1;
             min-width: 300px;
@@ -415,7 +412,7 @@
             top: 6rem;
             animation: fadeInRight 0.5s ease-out;
         }
-        
+
         .cart-header {
             display: flex;
             justify-content: space-between;
@@ -424,18 +421,18 @@
             padding-bottom: 0.5rem;
             border-bottom: 1px solid #eee;
         }
-        
+
         .cart-title {
             font-size: 1.2rem;
             color: var(--dark);
         }
-        
+
         .cart-items {
             margin-bottom: 1rem;
             max-height: 400px;
             overflow-y: auto;
         }
-        
+
         .cart-item {
             display: flex;
             justify-content: space-between;
@@ -444,26 +441,26 @@
             border-bottom: 1px solid #eee;
             animation: fadeIn 0.3s ease-out;
         }
-        
+
         .cart-item-info {
             flex: 1;
         }
-        
+
         .cart-item-name {
             font-weight: 500;
         }
-        
+
         .cart-item-price {
             color: var(--primary);
             font-size: 0.9rem;
         }
-        
+
         .cart-item-controls {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
-        
+
         .quantity-btn {
             width: 25px;
             height: 25px;
@@ -476,12 +473,12 @@
             justify-content: center;
             transition: all 0.2s;
         }
-        
+
         .quantity-btn:hover {
             background: #ddd;
             transform: scale(1.1);
         }
-        
+
         .remove-btn {
             color: #e74c3c;
             background: none;
@@ -491,11 +488,11 @@
             font-size: 1.2rem;
             transition: transform 0.2s;
         }
-        
+
         .remove-btn:hover {
             transform: scale(1.2);
         }
-        
+
         .cart-total {
             font-weight: bold;
             font-size: 1.1rem;
@@ -504,7 +501,7 @@
             padding-top: 1rem;
             border-top: 1px solid #eee;
         }
-        
+
         .checkout-btn {
             background: var(--whatsapp);
             color: white;
@@ -521,25 +518,25 @@
             justify-content: center;
             gap: 0.5rem;
         }
-        
+
         .checkout-btn:hover {
             background: #128C7E;
             transform: translateY(-2px);
             box-shadow: 0 5px 10px rgba(0,0,0,0.1);
         }
-        
+
         .empty-cart {
             text-align: center;
             color: #777;
             padding: 1rem;
         }
-        
+
         .empty-menu {
             text-align: center;
             padding: 2rem;
             color: #777;
         }
-        
+
         /* Floating Cart Button */
         .floating-cart-btn {
             position: fixed;
@@ -560,12 +557,12 @@
             transition: all 0.3s;
             animation: pulse 2s infinite;
         }
-        
+
         .floating-cart-btn:hover {
             background: var(--secondary);
             transform: scale(1.1);
         }
-        
+
         .cart-count {
             position: absolute;
             top: -5px;
@@ -581,7 +578,7 @@
             font-size: 0.8rem;
             font-weight: bold;
         }
-        
+
         /* WhatsApp Popup */
         .whatsapp-popup {
             position: fixed;
@@ -598,12 +595,12 @@
             visibility: hidden;
             transition: all 0.3s;
         }
-        
+
         .whatsapp-popup.active {
             opacity: 1;
             visibility: visible;
         }
-        
+
         .whatsapp-container {
             background: white;
             padding: 2rem;
@@ -613,22 +610,22 @@
             text-align: center;
             animation: fadeInUp 0.5s;
         }
-        
+
         .whatsapp-container h3 {
             margin-bottom: 1rem;
             color: var(--primary);
         }
-        
+
         .whatsapp-container p {
             margin-bottom: 1.5rem;
         }
-        
+
         .whatsapp-actions {
             display: flex;
             gap: 1rem;
             justify-content: center;
         }
-        
+
         .whatsapp-btn {
             background: var(--whatsapp);
             color: white;
@@ -642,87 +639,87 @@
             gap: 0.5rem;
             transition: all 0.3s;
         }
-        
+
         .whatsapp-btn:hover {
             background: #128C7E;
             transform: translateY(-2px);
         }
-        
+
         .cancel-btn {
             background: #e74c3c;
         }
-        
+
         .cancel-btn:hover {
             background: #c0392b;
         }
-        
+
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        
+
         @keyframes fadeInUp {
-            from { 
+            from {
                 opacity: 0;
                 transform: translateY(20px);
             }
-            to { 
+            to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         @keyframes fadeInRight {
-            from { 
+            from {
                 opacity: 0;
                 transform: translateX(20px);
             }
-            to { 
+            to {
                 opacity: 1;
                 transform: translateX(0);
             }
         }
-        
+
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(211, 84, 0, 0.7); }
             70% { box-shadow: 0 0 0 15px rgba(211, 84, 0, 0); }
             100% { box-shadow: 0 0 0 0 rgba(211, 84, 0, 0); }
         }
-        
+
         /* Responsive Styles */
         @media (max-width: 768px) {
             .nav-container {
                 flex-direction: column;
                 padding: 1rem;
             }
-            
+
             .nav-links {
                 margin-top: 1rem;
             }
-            
+
             .nav-links li {
                 margin-left: 1rem;
                 margin-right: 1rem;
             }
-            
+
             .hero h1 {
                 font-size: 2rem;
             }
-            
+
             .hero p {
                 font-size: 1rem;
             }
-            
+
             .menu-container {
                 flex-direction: column;
             }
-            
+
             .cart-sidebar {
                 position: static;
                 margin-top: 2rem;
             }
-            
+
             .gallery-container {
                 grid-template-columns: 1fr;
             }
@@ -960,7 +957,6 @@
         </div>
     </section>
 
-    <!-- Menu Section -->
     <section class="container" id="menu-section">
         <div class="controls">
             <div class="search-box">
@@ -979,26 +975,22 @@
                 <button class="filter-btn" data-category="Sea Foods">Sea Foods</button>
                 <button class="filter-btn" data-category="Egg Dishes">Egg Dishes</button>
                 <button class="filter-btn" data-category="Soup">Soup</button>
-<button class="filter-btn" data-category="Hot & Cold Drinks">Hot & Cold Drinks</button>
+                <button class="filter-btn" data-category="Hot & Cold Drinks">Hot & Cold Drinks</button>
                 <button class="filter-btn" data-category="FNR Special">FNR Special</button>
                 <button class="filter-btn" data-category="Dinner">Dinner</button>
-
-
             </div>
         </div>
-        
+
         <div class="menu-container">
             <div class="menu-items" id="menu-items">
-                <!-- Menu items will be rendered here -->
-            </div>
-            
+                </div>
+
             <div class="cart-sidebar">
                 <div class="cart-header">
                     <h2 class="cart-title">Your Order</h2>
                 </div>
                 <div class="cart-items" id="cart-items">
-                    <!-- Cart items will be rendered here -->
-                </div>
+                    </div>
                 <div class="cart-total" id="cart-total">
                     Total: AED 0.00
                 </div>
@@ -1009,9 +1001,8 @@
         </div>
     </section>
 
-    
 
-    <!-- WhatsApp Popup -->
+
     <div class="whatsapp-popup" id="whatsapp-popup">
         <div class="whatsapp-container">
             <h3>Confirm Your Order</h3>
@@ -1028,7 +1019,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 Tamil Food Restaurant. All rights reserved.</p>
+        <p>© 2025 Tamil Food Restaurant. All rights reserved.</p>
     </footer>
 
     <script>
@@ -1098,11 +1089,11 @@
 
             { id: 49, name: "Chicken 65 Biriyani", price: 16, category: "Special Dum Biriyani", veg: false },
             { id: 50, name: "Chicken Biriyani", price: 14, category: "Special Dum Biriyani", veg: false },
-{ id: 51, name: "Mutton Biriyani", price: 16, category: "Special Dum Biriyani", veg: false },
+            { id: 51, name: "Mutton Biriyani", price: 16, category: "Special Dum Biriyani", veg: false },
             { id: 52, name: "Egg Biriyani", price: 12, category: "Special Dum Biriyani", veg: false },
-{ id: 53, name: "Prawns Biriyani", price: 18, category: "Special Dum Biriyani", veg: false },
+            { id: 53, name: "Prawns Biriyani", price: 18, category: "Special Dum Biriyani", veg: false },
             { id: 54, name: "Fish Biriyani", price: 17, category: "Special Dum Biriyani", veg: false },
-{ id: 55, name: "Plain Biriyani", price: 11, category: "Special Dum Biriyani", veg: false },
+            { id: 55, name: "Plain Biriyani", price: 11, category: "Special Dum Biriyani", veg: false },
 
 
             { id: 56, name: "Veg Fried Rice", price: 9, category: "Fried Rice", veg: true },
@@ -1136,7 +1127,7 @@
             { id: 80, name: "Nethili Fish", price: 12, category: "Sea Foods", veg: false },
             { id: 81, name: "Prawns Masala", price: 15, category: "Sea Foods", veg: false },
             { id: 82, name: "Prawns 65", price: 15, category: "Sea Foods", veg: false },
-	    { id: 83, name: "Prawns Ginger", price: 15, category: "Sea Foods", veg: false },
+            { id: 83, name: "Prawns Ginger", price: 15, category: "Sea Foods", veg: false },
             { id: 84, name: "Prawns Sukka", price: 15, category: "Sea Foods", veg: false },
 
 
@@ -1152,8 +1143,8 @@
 
 
             { id: 92, name: "Tea", price: 1, category: "Hot & Cold Drinks", veg: true },
-            { id: 93, name: "Coffee", price: 3, category: "Hot & Cold Drinks", veg: true },            
-	    { id: 94, name: "Fresh Milk", price: 2, category: "Hot & Cold Drinks", veg: true },
+            { id: 93, name: "Coffee", price: 3, category: "Hot & Cold Drinks", veg: true },
+            { id: 94, name: "Fresh Milk", price: 2, category: "Hot & Cold Drinks", veg: true },
             { id: 95, name: "Soft drinks", price: 3, category: "Hot & Cold Drinks", veg: true },
             { id: 96, name: "Badam Milk (H)", price: 3, category: "Hot & Cold Drinks", veg: true },
             { id: 97, name: "Sukku Coffee", price: 2, category: "Hot & Cold Drinks", veg: true },
@@ -1161,29 +1152,29 @@
 
 
             { id: 99, name: "Chetinadu Chicken", price: 13, category: "FNR Special", veg: false },
-	    { id: 100, name: "Nandu Masala (Crab)", price: 12, category: "FNR Special", veg: false },
+            { id: 100, name: "Nandu Masala (Crab)", price: 12, category: "FNR Special", veg: false },
             { id: 101, name: "Mutton Boti Masala", price: 11, category: "FNR Special", veg: false },
             { id: 102, name: "Mutton Liver Masala", price: 12, category: "FNR Special", veg: false },
 
 
             { id: 103, name: "Parotta", price: 1, category: "Dinner", veg: true },
-	    { id: 104, name: "Parotta Set(2Pcs)", price: 5, category: "Dinner", veg: true },
+            { id: 104, name: "Parotta Set(2Pcs)", price: 5, category: "Dinner", veg: true },
             { id: 105, name: "Wheat Parotta", price: 2, category: "Dinner", veg: true },
-            { id: 106, name: "Wheat Parotta Set(2Pcs)", price: 7, category: "Dinner", veg: true },            
-	    { id: 107, name: "Chappathi", price: 1, category: "Dinner", veg: true },
-	    { id: 108, name: "Chappathi Set(2Pcs)", price: 5, category: "Dinner", veg: true },
+            { id: 106, name: "Wheat Parotta Set(2Pcs)", price: 7, category: "Dinner", veg: true },
+            { id: 107, name: "Chappathi", price: 1, category: "Dinner", veg: true },
+            { id: 108, name: "Chappathi Set(2Pcs)", price: 5, category: "Dinner", veg: true },
             { id: 109, name: "Egg Lappa", price: 7, category: "Dinner", veg: false },
-            { id: 110, name: "Veche Plain Parotta", price: 3, category: "Dinner", veg: true },           
+            { id: 110, name: "Veche Plain Parotta", price: 3, category: "Dinner", veg: true },
             { id: 111, name: "Egg Veche Parotta", price: 5, category: "Dinner", veg: false },
-	    { id: 112, name: "Egg Kothu Parotta", price: 12, category: "Dinner", veg: false },
+            { id: 112, name: "Egg Kothu Parotta", price: 12, category: "Dinner", veg: false },
             { id: 113, name: "Kothu Parotta Vegetable", price: 11, category: "Dinner", veg: true },
-            { id: 114, name: "Kothu Parotta Chicken", price: 12, category: "Dinner", veg: false },           
- 	    { id: 115, name: "Kothu Parotta Mutton", price: 14, category: "Dinner", veg: false },
-	    { id: 116, name: "Kothu Parotta Prawn", price: 15, category: "Dinner", veg: false },
+            { id: 114, name: "Kothu Parotta Chicken", price: 12, category: "Dinner", veg: false },
+            { id: 115, name: "Kothu Parotta Mutton", price: 14, category: "Dinner", veg: false },
+            { id: 116, name: "Kothu Parotta Prawn", price: 15, category: "Dinner", veg: false },
             { id: 117, name: "Mix Kothu Parotta", price: 15, category: "Dinner", veg: false },
-            { id: 118, name: "Chilli Parotta Chicken", price: 13, category: "Dinner", veg: false },          
-	    { id: 119, name: "Chilli Parotta Vegetable", price: 11, category: "Dinner", veg: false },
-	    { id: 120, name: "Chilli Parotta Mutton", price: 14, category: "Dinner", veg: false },
+            { id: 118, name: "Chilli Parotta Chicken", price: 13, category: "Dinner", veg: false },
+            { id: 119, name: "Chilli Parotta Vegetable", price: 11, category: "Dinner", veg: false },
+            { id: 120, name: "Chilli Parotta Mutton", price: 14, category: "Dinner", veg: false },
             { id: 121, name: "Chicken Lappa", price: 8, category: "Dinner", veg: false },
             { id: 122, name: "Chicken Murthaba", price: 10, category: "Dinner", veg: false },
        ];
@@ -1201,32 +1192,32 @@
         const whatsappPopup = document.getElementById('whatsapp-popup');
         const confirmWhatsappBtn = document.getElementById('confirm-whatsapp');
         const cancelWhatsappBtn = document.getElementById('cancel-whatsapp');
-        
+
         // State variables
         let currentCategory = 'all';
         let currentSearchTerm = '';
         let currentVegFilter = null;
-        
+
         // Initialize the app
         document.addEventListener('DOMContentLoaded', () => {
             renderMenu();
             updateCartUI();
-            
+
             // Add event listeners
             searchInput.addEventListener('input', handleSearch);
             filterButtons.forEach(btn => {
                 btn.addEventListener('click', () => handleFilterClick(btn));
             });
-            
+
             checkoutBtn.addEventListener('click', showWhatsappPopup);
-            floatingCartBtn.addEventListener('click', scrollToCart);
+            // floatingCartBtn.addEventListener('click', scrollToCart); // Removed as floating cart button is not present on index.html
             confirmWhatsappBtn.addEventListener('click', sendWhatsappOrder);
             cancelWhatsappBtn.addEventListener('click', hideWhatsappPopup);
-            
+
             // Scroll animations
             setupScrollAnimations();
         });
-        
+
         // Setup scroll animations
         function setupScrollAnimations() {
             const observer = new IntersectionObserver((entries) => {
@@ -1237,53 +1228,53 @@
                     }
                 });
             }, { threshold: 0.1 });
-            
+
             document.querySelectorAll('.gallery-item, .contact-info, iframe').forEach(el => {
                 observer.observe(el);
             });
         }
-        
+
         // Scroll to cart section
         function scrollToCart() {
             document.getElementById('menu-section').scrollIntoView({ behavior: 'smooth' });
         }
-        
+
         // Render the menu based on current filters
         function renderMenu() {
             menuContainer.innerHTML = '';
-            
+
             // Filter items based on search term and category
             const filteredItems = menuItems.filter(item => {
                 const matchesSearch = item.name.toLowerCase().includes(currentSearchTerm.toLowerCase());
-                const matchesCategory = currentCategory === 'all' || 
-                                      item.category === currentCategory || 
+                const matchesCategory = currentCategory === 'all' ||
+                                      item.category === currentCategory ||
                                       (currentCategory === 'Vegetarian' && item.veg) ||
                                       (currentCategory === 'Non-Veg' && !item.veg);
-                
+
                 return matchesSearch && matchesCategory;
             });
-            
+
             // Group by category
             const categories = [...new Set(filteredItems.map(item => item.category))];
-            
+
             if (filteredItems.length === 0) {
                 menuContainer.innerHTML = '<p class="empty-menu">No items match your search.</p>';
                 return;
             }
-            
+
             categories.forEach(category => {
                 const categoryItems = filteredItems.filter(item => item.category === category);
-                
+
                 const categoryDiv = document.createElement('div');
                 categoryDiv.className = 'category';
-                
+
                 const categoryTitle = document.createElement('div');
                 categoryTitle.className = 'category-title';
                 categoryTitle.textContent = category;
-                
+
                 const itemsGrid = document.createElement('div');
                 itemsGrid.className = 'items-grid';
-                
+
                 categoryItems.forEach(item => {
                     const itemElement = document.createElement('div');
                     itemElement.className = 'menu-item';
@@ -1294,43 +1285,43 @@
                     `;
                     itemsGrid.appendChild(itemElement);
                 });
-                
+
                 categoryDiv.appendChild(categoryTitle);
                 categoryDiv.appendChild(itemsGrid);
                 menuContainer.appendChild(categoryDiv);
             });
         }
-        
+
         // Handle search input
         function handleSearch(e) {
             currentSearchTerm = e.target.value;
             renderMenu();
         }
-        
+
         // Handle filter button clicks
         function handleFilterClick(btn) {
             filterButtons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            
+
             currentCategory = btn.dataset.category;
             renderMenu();
         }
-        
+
         // Add item to cart
         function addToCart(id) {
             const item = menuItems.find(i => i.id === id);
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             const existing = cart.find(i => i.id === id);
-            
+
             if (existing) {
                 existing.quantity++;
             } else {
                 cart.push({ ...item, quantity: 1 });
             }
-            
+
             localStorage.setItem('cart', JSON.stringify(cart));
             updateCartUI();
-            
+
             // Show a brief visual feedback
             const addButton = document.querySelector(`.add-to-cart[onclick="addToCart(${id})"]`);
             if (addButton) {
@@ -1341,36 +1332,39 @@
                     addButton.style.backgroundColor = 'var(--primary)';
                 }, 1000);
             }
-            
+
             // Animate cart count
             animateCartCount();
         }
-        
+
         // Animate cart count
         function animateCartCount() {
-            cartCount.style.transform = 'scale(1.5)';
-            setTimeout(() => {
-                cartCount.style.transform = 'scale(1)';
-            }, 300);
+            // Check if floatingCartBtn and cartCount exist before animating
+            if (floatingCartBtn && cartCount) {
+                cartCount.style.transform = 'scale(1.5)';
+                setTimeout(() => {
+                    cartCount.style.transform = 'scale(1)';
+                }, 300);
+            }
         }
-        
+
         // Update cart quantity
         function changeQuantity(id, delta) {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             const item = cart.find(i => i.id === id);
-            
+
             if (item) {
                 item.quantity += delta;
-                
+
                 if (item.quantity <= 0) {
                     cart = cart.filter(i => i.id !== id);
                 }
-                
+
                 localStorage.setItem('cart', JSON.stringify(cart));
                 updateCartUI();
             }
         }
-        
+
         // Remove item from cart
         function removeFromCart(id) {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -1378,27 +1372,30 @@
             localStorage.setItem('cart', JSON.stringify(cart));
             updateCartUI();
         }
-        
+
         // Update the cart UI
         function updateCartUI() {
             cartContainer.innerHTML = '';
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             let total = 0;
-            
+
             if (cart.length === 0) {
                 cartContainer.innerHTML = '<p class="empty-cart">Your cart is empty</p>';
                 cartTotalElement.textContent = 'Total: AED 0.00';
-                cartCount.textContent = '0';
+                // Only update cartCount if the element exists
+                if (cartCount) {
+                    cartCount.textContent = '0';
+                }
                 checkoutBtn.style.display = 'none';
                 return;
             }
-            
+
             checkoutBtn.style.display = 'flex';
-            
+
             cart.forEach(item => {
                 const itemTotal = item.price * item.quantity;
                 total += itemTotal;
-                
+
                 const cartItem = document.createElement('div');
                 cartItem.className = 'cart-item';
                 cartItem.innerHTML = `
@@ -1415,71 +1412,72 @@
                 `;
                 cartContainer.appendChild(cartItem);
             });
-            
+
             cartTotalElement.textContent = `Total: AED ${total.toFixed(2)}`;
-            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            // Only update cartCount if the element exists
+            if (cartCount) {
+                cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            }
         }
-        
+
         // Show WhatsApp confirmation popup
         function showWhatsappPopup() {
             whatsappPopup.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-        
+
         // Hide WhatsApp confirmation popup
         function hideWhatsappPopup() {
             whatsappPopup.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
-        
+
         // Send order via WhatsApp
         function sendWhatsappOrder() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            
+
             if (cart.length === 0) {
                 alert('Your cart is empty!');
                 return;
             }
-            
+
             // Format order message
             let message = `*Order from Tamil Food Restaurant*%0A%0A`;
             message += `*Customer Details*%0A`;
             message += `Name: [Please enter your name]%0A`;
             message += `Phone: [Please enter your phone]%0A`;
             message += `Delivery Address: [Please enter address if delivery]%0A%0A`;
-            
+
             message += `*Order Items*%0A`;
             cart.forEach(item => {
                 message += `${item.name} x ${item.quantity} - AED ${(item.price * item.quantity).toFixed(2)}%0A`;
             });
-            
+
             message += `%0A*Total: AED ${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}*%0A%0A`;
             message += `*Special Instructions:* [Any special requests or notes]`;
-            
+
             // WhatsApp API URL
             const phoneNumber = '+971544205511'; // Replace with your restaurant's WhatsApp number
             const whatsappUrl = `https://wa.me/${+971544205511}?text=${message}`;
-            
+
             // Open WhatsApp in new tab
             window.open(whatsappUrl, '_blank');
-            
+
             // Clear cart after sending
             localStorage.removeItem('cart');
             updateCartUI();
             hideWhatsappPopup();
         }
-        
+
         // Make functions available globally
         window.addToCart = addToCart;
         window.changeQuantity = changeQuantity;
         window.removeFromCart = removeFromCart;
     </script>
-<!-- Floating Chat Button -->
 <div class="floating-chat-btn" id="floating-chat-btn">
     <i class="fas fa-comments"></i>
 </div>
 
-<!-- Chatbot Container -->
 <div class="chatbot-container" id="chatbot-container">
     <div class="chatbot-header">
         <h3>Restaurant AI Assistant</h3>
@@ -1530,7 +1528,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function addMessage(text, sender) {
         const message = document.createElement('div');
         message.classList.add('message', `${sender}-message`);
-        message.textContent = text;
+        message.innerHTML = text; // Use innerHTML to render links and line breaks
         messagesContainer.appendChild(message);
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
@@ -1549,13 +1547,52 @@ document.addEventListener('DOMContentLoaded', function () {
         if (typing) typing.remove();
     }
 
-    function generateAIResponse(input) {
-        const lower = input.toLowerCase();
-        if (lower.includes("menu")) return "You can explore our delicious Tamil menu above or visit the Menu section.";
-        if (lower.includes("hours")) return "We’re open daily from 8 AM to 10 PM.";
-        if (lower.includes("reservation")) return "Please call us at +971 50 123 4567 to make a reservation.";
-        if (lower.includes("location")) return "We're located at 123 Food Street, Al Nahda, Sharjah, UAE.";
-        return "I'm here to help with anything about our restaurant! Try asking about our menu or location.";
+   function generateAIResponse(input) {
+    const lower = input.toLowerCase();
+
+    // Menu Highlights & Full Menu
+    if (lower.includes("menu") || lower.includes("food") || lower.includes("dishes")) {
+        let fullMenuResponse = "Certainly! Here is our full menu:\n\n";
+
+        // Group menu items by category
+        const categorizedMenu = menuItems.reduce((acc, item) => {
+            if (!acc[item.category]) {
+                acc[item.category] = [];
+            }
+            acc[item.category].push(item);
+            return acc;
+        }, {});
+
+        // Format and append each category and its items
+        for (const category in categorizedMenu) {
+            fullMenuResponse += `*${category}*:\n`;
+            categorizedMenu[category].forEach(item => {
+                fullMenuResponse += `• ${item.name} - AED ${item.price.toFixed(2)}\n`;
+            });
+            fullMenuResponse += "\n"; // Add a line break after each category
+        }
+
+        fullMenuResponse += "You can also view the complete menu on our <a href='menu.html' target='_blank'>Menu Page</a>.";
+        return fullMenuResponse;
+    }
+
+    // Auto Search in Menu Items
+    const matches = menuItems.filter(item =>
+        item.name.toLowerCase().includes(lower)
+    );
+
+    if (matches.length > 0) {
+        const response = matches.slice(0, 10).map(item => `• ${item.name} - AED ${item.price.toFixed(2)}`).join('\n');
+        return `Here’s what I found for your search:\n\n${response}`;
+    }
+
+    // Other FAQs
+    if (lower.includes("hours") || lower.includes("timing")) return "🕗 We're open daily from 8 AM to 10 PM.";
+    if (lower.includes("reservation") || lower.includes("book") || lower.includes("table"))
+        return "📞 You can make a reservation by calling us at 06 522 0875 / 054 420 5511.";
+    if (lower.includes("location") || lower.includes("where")) return "📍 We're at Al Tahira Building, Shop No. 2, Al Nahda, Sharjah, UAE.";
+
+    return "I'm here to help with anything about our restaurant! Try asking about the menu, location, or hours.";
     }
 
     document.querySelectorAll('.quick-reply-btn').forEach(btn => {
