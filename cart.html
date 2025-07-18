@@ -1,8 +1,1009 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Your Cart</title><link rel="stylesheet" href="styles.css"></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - Tamil Food Restaurant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #d35400;
+            --secondary: #e67e22;
+            --light: #f5f5f5;
+            --dark: #333;
+            --success: #27ae60;
+            --whatsapp: #25D366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--light); /* Changed for a consistent background */
+            color: var(--dark);
+            line-height: 1.6;
+            padding-top: 80px; /* To account for fixed nav */
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Lora', serif;
+        }
+
+        /* Navigation - Copied from index.html/menu.html */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo a {
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Cart Page Specific Styles */
+        .cart-page-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .cart-page-container h1 {
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .cart-page-container h1::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .cart-items-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.3s ease;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-details {
+            flex-grow: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+
+        .cart-item-price {
+            color: var(--primary);
+            font-weight: bold;
+            margin-top: 0.2rem;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border: none;
+            border-radius: 50%;
+            background: #eee;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .quantity-btn:hover {
+            background: #ddd;
+            transform: scale(1.1);
+        }
+
+        .cart-item-quantity {
+            font-weight: 600;
+            width: 25px;
+            text-align: center;
+        }
+
+        .remove-item-btn {
+            background: none;
+            border: none;
+            color: #e74c3c;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .remove-item-btn:hover {
+            transform: scale(1.2);
+        }
+
+        .cart-summary {
+            border-top: 2px solid var(--secondary);
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+            text-align: right;
+        }
+
+        .cart-total-label {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        .cart-total-amount {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-left: 1rem;
+        }
+
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            background: var(--whatsapp);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: background 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .checkout-btn:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        .empty-cart-message {
+            text-align: center;
+            padding: 3rem 0;
+            color: #777;
+            font-size: 1.2rem;
+        }
+
+        .continue-shopping-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            background: var(--secondary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .continue-shopping-btn:hover {
+            background: var(--primary);
+        }
+
+        /* WhatsApp Popup - Copied from index.html */
+        .whatsapp-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .whatsapp-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            animation: fadeInUp 0.5s;
+        }
+
+        .whatsapp-container h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .whatsapp-container p {
+            margin-bottom: 1.5rem;
+        }
+
+        .whatsapp-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .whatsapp-btn {
+            background: var(--whatsapp);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        .cancel-btn {
+            background: #e74c3c;
+        }
+
+        .cancel-btn:hover {
+            background: #c0392b;
+        }
+
+        /* Footer - Copied from index.html/menu.html */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Chatbot Styles - Copied from index.html/menu.html */
+        .floating-chat-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #2c3e50;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+        .floating-chat-btn:hover {
+            background: #1a252f;
+            transform: scale(1.1);
+        }
+        .chatbot-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            height: 450px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        .chatbot-container.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        .chatbot-header {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chatbot-close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .chatbot-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background: #f9f9f9;
+        }
+        .chatbot-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #eee;
+            background: white;
+        }
+        .chatbot-text-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+        }
+        .chatbot-send-btn {
+            margin-left: 10px;
+            padding: 10px 15px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .chatbot-quick-replies {
+            padding: 10px;
+            border-top: 1px solid #eee;
+            background: #f5f5f5;
+        }
+        .chatbot-quick-replies p {
+            margin: 0 0 8px 0;
+            font-size: 12px;
+            color: #666;
+        }
+        .quick-reply-btn {
+            margin: 0 5px 5px 0;
+            padding: 5px 10px;
+            background: #e3f2fd;
+            border: 1px solid #bbdefb;
+            border-radius: 15px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .quick-reply-btn:hover {
+            background: #bbdefb;
+        }
+        .message {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 18px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+        .user-message {
+            background: #e3f2fd;
+            margin-left: auto;
+            border-bottom-right-radius: 5px;
+        }
+        .bot-message {
+            background: #f1f1f1;
+            margin-right: auto;
+            border-bottom-left-radius: 5px;
+        }
+        .typing-indicator {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #f1f1f1;
+            border-radius: 18px;
+            margin-bottom: 15px;
+            border-bottom-left-radius: 5px;
+        }
+        .typing-indicator span {
+            height: 8px;
+            width: 8px;
+            background: #666;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 2px;
+            animation: typing 1s infinite ease-in-out;
+        }
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cart-page-container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+            .cart-page-container h1 {
+                font-size: 2rem;
+            }
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            .cart-item-controls {
+                width: 100%;
+                justify-content: flex-end;
+            }
+            .cart-total-label, .cart-total-amount {
+                font-size: 1.2rem;
+            }
+            .checkout-btn {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
 <body>
-<header><h1>Cart</h1><nav><a href="index.html">Home</a><a href="menu.html">Menu</a></nav></header>
-<main><section id="cart-items"></section><button onclick="location.href='checkout.html'">Checkout</button></main>
-<script src="script.js"></script></body></html>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">Tamil Food Restaurant</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="index.html#location-section">Location</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="cart-page-container">
+        <h1>Your Shopping Cart</h1>
+        <ul id="cart-items-list" class="cart-items-list">
+            </ul>
+        <div id="empty-cart-message" class="empty-cart-message" style="display:none;">
+            Your cart is empty. <br><a href="menu.html" class="continue-shopping-btn">Start Shopping!</a>
+        </div>
+        <div class="cart-summary">
+            <span class="cart-total-label">Total:</span>
+            <span id="cart-total-amount" class="cart-total-amount">AED 0.00</span>
+        </div>
+        <button id="checkout-btn" class="checkout-btn">
+            <i class="fab fa-whatsapp"></i> Order via WhatsApp
+        </button>
+    </div>
+
+    <div class="whatsapp-popup" id="whatsapp-popup">
+        <div class="whatsapp-container">
+            <h3>Confirm Your Order</h3>
+            <p>You're about to send your order via WhatsApp. Please confirm to proceed.</p>
+            <div class="whatsapp-actions">
+                <button class="whatsapp-btn" id="confirm-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Send Order
+                </button>
+                <button class="whatsapp-btn cancel-btn" id="cancel-whatsapp">
+                    <i class="fas fa-times"></i> Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Tamil Food Restaurant. All rights reserved.</p>
+    </footer>
+
+    <div class="floating-chat-btn" id="floating-chat-btn">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <div class="chatbot-container" id="chatbot-container">
+        <div class="chatbot-header">
+            <h3>Restaurant AI Assistant</h3>
+            <button class="chatbot-close-btn">×</button>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages"></div>
+        <div class="chatbot-input">
+            <input type="text" placeholder="Type your message..." class="chatbot-text-input" id="chatbot-input">
+            <button class="chatbot-send-btn">Send</button>
+        </div>
+        <div class="chatbot-quick-replies">
+            <p>Quick questions:</p>
+            <button class="quick-reply-btn">What's on the menu?</button>
+            <button class="quick-reply-btn">How to make reservation?</button>
+            <button class="quick-reply-btn">What are your hours?</button>
+            <button class="quick-reply-btn">Where are you located?</button>
+        </div>
+    </div>
+
+    <script>
+        // Menu Items (needs to be consistent across all pages using cart/chatbot)
+        const menuItems = [
+            { id: 1, name: "Green Peas Masala (3 Pcs)", price: 7, category: "Veg Gravy", veg: true },
+            { id: 2, name: "Gobi Masala", price: 11, category: "Veg Gravy", veg: true },
+            { id: 3, name: "Mushroom Masala", price: 12, category: "Veg Gravy", veg: true },
+            { id: 4, name: "Mushroom Chilli", price: 12, category: "Veg Gravy", veg: true },
+            { id: 5, name: "Mushroom Munchurian", price: 13, category: "Veg Gravy", veg: true },
+            { id: 6, name: "Kadai Paneer", price: 12, category: "Veg Gravy", veg: true },
+            { id: 7, name: "Mutter Paneer", price: 11, category: "Veg Gravy", veg: true },
+            { id: 8, name: "Dal Fry", price: 8, category: "Veg Gravy", veg: true },
+            { id: 9, name: "Dal Tadka", price: 10, category: "Veg Gravy", veg: true },
+            { id: 10, name: "Dal Kichadi", price: 10, category: "Veg Gravy", veg: true },
+            { id: 11, name: "Chilly Chicken(Dry)", price: 12, category: "Chicken", veg: false },
+            { id: 12, name: "Chilly Chicken(Gravy)", price: 12, category: "Chicken", veg: false },
+            { id: 13, name: "Chicken Masala", price: 12, category: "Chicken", veg: true },
+            { id: 14, name: "Chicken Curry", price: 12, category: "Chicken", veg: true },
+            { id: 15, name: "Chicken Roast Dry", price: 12, category: "Chicken", veg: false },
+            { id: 16, name: "Chicken 65", price: 12, category: "Chicken", veg: true },
+            { id: 17, name: "Chicken Pallipalayam", price: 12, category: "Chicken", veg: false },
+            { id: 18, name: "Chicken Sukka", price: 12, category: "Chicken", veg: true },
+            { id: 19, name: "Chicken Boneless 65", price: 12, category: "Chicken", veg: false },
+            { id: 20, name: "Chicken Kadai 65", price: 12, category: "Chicken", veg: false },
+            { id: 21, name: "Chicken Garlic", price: 12, category: "Chicken", veg: true },
+            { id: 22, name: "Chicken Butter Gravy", price: 12, category: "Chicken", veg: false },
+            { id: 23, name: "Chicken Pepper", price: 12, category: "Chicken", veg: true },
+            { id: 24, name: "Chicken Manchurian", price: 12, category: "Chicken", veg: false },
+            { id: 25, name: "Mutton Curry", price: 14, category: "Mutton", veg: false },
+            { id: 26, name: "Mutton Masala", price: 14, category: "Mutton", veg: false },
+            { id: 27, name: "Mutton Sukka", price: 14, category: "Mutton", veg: false },
+            { id: 28, name: "Mutton Kadai", price: 14, category: "Mutton", veg: false },
+            { id: 29, name: "Mutton Pepper Dry", price: 14, category: "Mutton", veg: false },
+            { id: 30, name: "Mutton Chilli", price: 14, category: "Mutton", veg: false },
+            { id: 31, name: "Mutton Pepper Gravy", price: 14, category: "Mutton", veg: false },
+            { id: 32, name: "Mutton Chetinadu", price: 14, category: "Mutton", veg: false },
+            { id: 33, name: "Prawns Noodles", price: 16, category: "Noodles", veg: false },
+            { id: 34, name: "Schezwan Veg Noodles", price: 12, category: "Noodles", veg: true },
+            { id: 35, name: "Schezwan Egg Noodles", price: 13, category: "Noodles", veg: false },
+            { id: 36, name: "Schezwan Chicken Noodles", price: 14, category: "Noodles", veg: false },
+            { id: 37, name: "Schezwan Mutton Noodles", price: 16, category: "Noodles", veg: false },
+            { id: 66, name: "Veg Noodles", price: 11, category: "Noodles", veg: true },
+            { id: 70, name: "Egg Noodles", price: 12, category: "Noodles", veg: false },
+            { id: 71, name: "Mix Noodles", price: 16, category: "Noodles", veg: false },
+            { id: 72, name: "Chicken Noodles", price: 13, category: "Noodles", veg: false },
+            { id: 73, name: "Mutton Noodles", price: 15, category: "Noodles", veg: false },
+            { id: 56, name: "Veg Fried Rice", price: 9, category: "Fried Rice", veg: true },
+            { id: 61, name: "Egg Fried Rice", price: 9, category: "Fried Rice", veg: false },
+            { id: 62, name: "Chicken Fried Rice", price: 9, category: "Fried Rice", veg: false },
+            { id: 63, name: "Mutton Fried Rice", price: 9, category: "Fried Rice", veg: false },
+            { id: 64, name: "Mix Fried Rice", price: 9, category: "Fried Rice", veg: false },
+            { id: 65, name: "Schezwan Egg Fried Rice", price: 9, category: "Fried Rice", veg: false },
+            { id: 67, name: "Schezwan Chicken Fried Rice", price: 9, category: "Fried Rice", veg: false },
+            { id: 68, name: "Schezwan Mutton Fried Rice", price: 9, category: "Fried Rice", veg: false },
+            { id: 69, name: "Prawns Fried Rice", price: 9, category: "Fried Rice", veg: false },
+            { id: 49, name: "Chicken 65 Biriyani", price: 16, category: "Special Dum Biriyani", veg: false },
+            { id: 50, name: "Chicken Biriyani", price: 14, category: "Special Dum Biriyani", veg: false },
+            { id: 51, name: "Mutton Biriyani", price: 16, category: "Special Dum Biriyani", veg: false },
+            { id: 52, name: "Egg Biriyani", price: 12, category: "Special Dum Biriyani", veg: false },
+            { id: 53, name: "Prawns Biriyani", price: 18, category: "Special Dum Biriyani", veg: false },
+            { id: 54, name: "Fish Biriyani", price: 17, category: "Special Dum Biriyani", veg: false },
+            { id: 55, name: "Plain Biriyani", price: 11, category: "Special Dum Biriyani", veg: false },
+            { id: 38, name: "Gobi Manchurian Dry", price: 12, category: "Vegetable Dishes", veg: true },
+            { id: 39, name: "Gobi Manchurian Gravy", price: 12, category: "Vegetable Dishes", veg: true },
+            { id: 40, name: "Gobi Chilli Dry", price: 12, category: "Vegetable Dishes", veg: true },
+            { id: 41, name: "Gobi Chilli Gravy", price: 12, category: "Vegetable Dishes", veg: true },
+            { id: 42, name: "Gobi 65", price: 12, category: "Vegetable Dishes", veg: true },
+            { id: 43, name: "Channa Masala", price: 7, category: "Vegetable Dishes", veg: true },
+            { id: 44, name: "Mix Vegetable", price: 7, category: "Vegetable Dishes", veg: true },
+            { id: 45, name: "Paneer Masala", price: 11, category: "Vegetable Dishes", veg: true },
+            { id: 46, name: "South Indian Thali(Veg)", price: 11, category: "Thali", veg: true },
+            { id: 47, name: "South Indian Thali(Chicken/Fish)", price: 13, category: "Thali", veg: false },
+            { id: 48, name: "Variety Rice", price: 8, category: "Thali", veg: true },
+            { id: 57, name: "Jeera Rice", price: 9, category: "Fried Rice", veg: true },
+            { id: 58, name: "Ghee Rice", price: 9, category: "Fried Rice", veg: true },
+            { id: 59, name: "Gobi Fried Rice", price: 9, category: "Fried Rice", veg: true },
+            { id: 60, name: "Ginger Fried Rice", price: 9, category: "Fried Rice", veg: true },
+            { id: 74, name: "Fish Masala", price: 9, category: "Sea Foods", veg: false },
+            { id: 75, name: "Fish Fry", price: 15, category: "Sea Foods", veg: false },
+            { id: 76, name: "Sherry Fry", price: 15, category: "Sea Foods", veg: false },
+            { id: 77, name: "Fish Manchurian", price: 15, category: "Sea Foods", veg: false },
+            { id: 78, name: "Fish Chilli", price: 14, category: "Sea Foods", veg: false },
+            { id: 79, name: "Ayala Fish Fry", price: 15, category: "Sea Foods", veg: false },
+            { id: 80, name: "Nethili Fish", price: 12, category: "Sea Foods", veg: false },
+            { id: 81, name: "Prawns Masala", price: 15, category: "Sea Foods", veg: false },
+            { id: 82, name: "Prawns 65", price: 15, category: "Sea Foods", veg: false },
+            { id: 83, name: "Prawns Ginger", price: 15, category: "Sea Foods", veg: false },
+            { id: 84, name: "Prawns Sukka", price: 15, category: "Sea Foods", veg: false },
+            { id: 85, name: "Egg Masala", price: 8, category: "Egg Dishes", veg: false },
+            { id: 86, name: "Egg Roast", price: 8, category: "Egg Dishes", veg: false },
+            { id: 87, name: "Egg Bhurji", price: 6, category: "Egg Dishes", veg: false },
+            { id: 88, name: "Veg Soup", price: 5, category: "Soup", veg: true },
+            { id: 89, name: "Chicken Soup", price: 5, category: "Soup", veg: false },
+            { id: 90, name: "Mutton Soup", price: 6, category: "Soup", veg: false },
+            { id: 91, name: "Nandu Soup", price: 12, category: "Soup", veg: false },
+            { id: 92, name: "Tea", price: 1, category: "Hot & Cold Drinks", veg: true },
+            { id: 93, name: "Coffee", price: 3, category: "Hot & Cold Drinks", veg: true },
+            { id: 94, name: "Fresh Milk", price: 2, category: "Hot & Cold Drinks", veg: true },
+            { id: 95, name: "Soft drinks", price: 3, category: "Hot & Cold Drinks", veg: true },
+            { id: 96, name: "Badam Milk (H)", price: 3, category: "Hot & Cold Drinks", veg: true },
+            { id: 97, name: "Sukku Coffee", price: 2, category: "Hot & Cold Drinks", veg: true },
+            { id: 98, name: "Mineral Water", price: 1, category: "Hot & Cold Drinks", veg: true },
+            { id: 99, name: "Chetinadu Chicken", price: 13, category: "FNR Special", veg: false },
+            { id: 100, name: "Nandu Masala (Crab)", price: 12, category: "FNR Special", veg: false },
+            { id: 101, name: "Mutton Boti Masala", price: 11, category: "FNR Special", veg: false },
+            { id: 102, name: "Mutton Liver Masala", price: 12, category: "FNR Special", veg: false },
+            { id: 103, name: "Parotta", price: 1, category: "Dinner", veg: true },
+            { id: 104, name: "Parotta Set(2Pcs)", price: 5, category: "Dinner", veg: true },
+            { id: 105, name: "Wheat Parotta", price: 2, category: "Dinner", veg: true },
+            { id: 106, name: "Wheat Parotta Set(2Pcs)", price: 7, category: "Dinner", veg: true },
+            { id: 107, name: "Chappathi", price: 1, category: "Dinner", veg: true },
+            { id: 108, name: "Chappathi Set(2Pcs)", price: 5, category: "Dinner", veg: true },
+            { id: 109, name: "Egg Lappa", price: 7, category: "Dinner", veg: false },
+            { id: 110, name: "Veche Plain Parotta", price: 3, category: "Dinner", veg: true },
+            { id: 111, name: "Egg Veche Parotta", price: 5, category: "Dinner", veg: false },
+            { id: 112, name: "Egg Kothu Parotta", price: 12, category: "Dinner", veg: false },
+            { id: 113, name: "Kothu Parotta Vegetable", price: 11, category: "Dinner", veg: true },
+            { id: 114, name: "Kothu Parotta Chicken", price: 12, category: "Dinner", veg: false },
+            { id: 115, name: "Kothu Parotta Mutton", price: 14, category: "Dinner", veg: false },
+            { id: 116, name: "Kothu Parotta Prawn", price: 15, category: "Dinner", veg: false },
+            { id: 117, name: "Mix Kothu Parotta", price: 15, category: "Dinner", veg: false },
+            { id: 118, name: "Chilli Parotta Chicken", price: 13, category: "Dinner", veg: false },
+            { id: 119, name: "Chilli Parotta Vegetable", price: 11, category: "Dinner", veg: false },
+            { id: 120, name: "Chilli Parotta Mutton", price: 14, category: "Dinner", veg: false },
+            { id: 121, name: "Chicken Lappa", price: 8, category: "Dinner", veg: false },
+            { id: 122, name: "Chicken Murthaba", price: 10, category: "Dinner", veg: false },
+        ];
+
+
+        // DOM Elements for Cart
+        const cartItemsList = document.getElementById('cart-items-list');
+        const cartTotalAmount = document.getElementById('cart-total-amount');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+
+        // DOM Elements for WhatsApp Popup
+        const whatsappPopup = document.getElementById('whatsapp-popup');
+        const confirmWhatsappBtn = document.getElementById('confirm-whatsapp');
+        const cancelWhatsappBtn = document.getElementById('cancel-whatsapp');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCartItems();
+            updateCartSummary();
+
+            checkoutBtn.addEventListener('click', showWhatsappPopup);
+            confirmWhatsappBtn.addEventListener('click', sendWhatsappOrder);
+            cancelWhatsappBtn.addEventListener('click', hideWhatsappPopup);
+
+            // Chatbot initialization for cart.html
+            const chatBtn = document.getElementById('floating-chat-btn');
+            const chatContainer = document.getElementById('chatbot-container');
+            const closeBtn = document.querySelector('.chatbot-close-btn');
+            const sendBtn = document.querySelector('.chatbot-send-btn');
+            const chatInput = document.getElementById('chatbot-input');
+            const messagesContainer = document.getElementById('chatbot-messages');
+
+            chatBtn.addEventListener('click', () => chatContainer.classList.toggle('active'));
+            closeBtn.addEventListener('click', () => chatContainer.classList.remove('active'));
+            sendBtn.addEventListener('click', sendMessage);
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') sendMessage();
+            });
+
+            function sendMessage() {
+                const message = chatInput.value.trim();
+                if (!message) return;
+                addMessage(message, 'user');
+                chatInput.value = '';
+                showTypingIndicator();
+                setTimeout(() => {
+                    removeTypingIndicator();
+                    const response = generateAIResponse(message);
+                    addMessage(response, 'bot');
+                }, 1000 + Math.random() * 1500);
+            }
+
+            function addMessage(text, sender) {
+                const message = document.createElement('div');
+                message.classList.add('message', `${sender}-message`);
+                message.innerHTML = text;
+                messagesContainer.appendChild(message);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+
+            function showTypingIndicator() {
+                const typing = document.createElement('div');
+                typing.className = 'typing-indicator';
+                typing.id = 'typing-indicator';
+                typing.innerHTML = '<span></span><span></span><span></span>';
+                messagesContainer.appendChild(typing);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+
+            function removeTypingIndicator() {
+                const typing = document.getElementById('typing-indicator');
+                if (typing) typing.remove();
+            }
+
+            function generateAIResponse(input) {
+                const lower = input.toLowerCase();
+
+                if (lower.includes("menu") || lower.includes("food") || lower.includes("dishes")) {
+                    let fullMenuResponse = "Certainly! Here is our full menu:\n\n";
+                    const categorizedMenu = menuItems.reduce((acc, item) => {
+                        if (!acc[item.category]) {
+                            acc[item.category] = [];
+                        }
+                        acc[item.category].push(item);
+                        return acc;
+                    }, {});
+
+                    for (const category in categorizedMenu) {
+                        fullMenuResponse += `*${category}*:\n`;
+                        categorizedMenu[category].forEach(item => {
+                            fullMenuResponse += `• ${item.name} - AED ${item.price.toFixed(2)}\n`;
+                        });
+                        fullMenuResponse += "\n";
+                    }
+
+                    fullMenuResponse += "You can also view the complete menu on our <a href='menu.html' target='_blank'>Menu Page</a>.";
+                    return fullMenuResponse;
+                }
+
+                const matches = menuItems.filter(item =>
+                    item.name.toLowerCase().includes(lower)
+                );
+
+                if (matches.length > 0) {
+                    const response = matches.slice(0, 10).map(item => `• ${item.name} - AED ${item.price.toFixed(2)}`).join('\n');
+                    return `Here’s what I found for your search:\n\n${response}`;
+                }
+
+                if (lower.includes("hours") || lower.includes("timing")) return "🕗 We're open daily from 8 AM to 10 PM.";
+                if (lower.includes("reservation") || lower.includes("book") || lower.includes("table"))
+                    return "📞 You can make a reservation by calling us at +971 50 123 4567.";
+                if (lower.includes("location") || lower.includes("where")) return "📍 We're at 123 Food Street, Al Nahda, Sharjah, UAE.";
+
+                return "I'm here to help with anything about our restaurant! Try asking about the menu, location, or hours.";
+            }
+
+            document.querySelectorAll('.quick-reply-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const text = this.textContent;
+                    addMessage(text, 'user');
+                    showTypingIndicator();
+                    setTimeout(() => {
+                        removeTypingIndicator();
+                        const reply = generateAIResponse(text);
+                        addMessage(reply, 'bot');
+                    }, 1000 + Math.random() * 1500);
+                });
+            });
+
+            setTimeout(() => {
+                addMessage("Hello! I'm your AI restaurant assistant. Ask me about our menu, hours, or reservations!", 'bot');
+            }, 1500);
+        });
+
+        // Cart functions
+        function getCart() {
+            return JSON.parse(localStorage.getItem('cart')) || [];
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function renderCartItems() {
+            const cart = getCart();
+            cartItemsList.innerHTML = ''; // Clear existing items
+
+            if (cart.length === 0) {
+                emptyCartMessage.style.display = 'block';
+                checkoutBtn.style.display = 'none';
+            } else {
+                emptyCartMessage.style.display = 'none';
+                checkoutBtn.style.display = 'flex'; // Use flex to align WhatsApp icon
+                cart.forEach(item => {
+                    const li = document.createElement('li');
+                    li.className = 'cart-item';
+                    li.innerHTML = `
+                        <div class="cart-item-details">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">AED ${(item.price * item.quantity).toFixed(2)}</div>
+                        </div>
+                        <div class="cart-item-controls">
+                            <button class="quantity-btn" onclick="changeQuantity(${item.id}, -1)">-</button>
+                            <span class="cart-item-quantity">${item.quantity}</span>
+                            <button class="quantity-btn" onclick="changeQuantity(${item.id}, 1)">+</button>
+                            <button class="remove-item-btn" onclick="removeFromCart(${item.id})">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                    `;
+                    cartItemsList.appendChild(li);
+                });
+            }
+        }
+
+        function updateCartSummary() {
+            const cart = getCart();
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotalAmount.textContent = `AED ${total.toFixed(2)}`;
+        }
+
+        function changeQuantity(id, delta) {
+            let cart = getCart();
+            const itemIndex = cart.findIndex(item => item.id === id);
+
+            if (itemIndex > -1) {
+                cart[itemIndex].quantity += delta;
+                if (cart[itemIndex].quantity <= 0) {
+                    cart.splice(itemIndex, 1); // Remove item if quantity is 0 or less
+                }
+                saveCart(cart);
+                renderCartItems();
+                updateCartSummary();
+            }
+        }
+
+        function removeFromCart(id) {
+            let cart = getCart();
+            cart = cart.filter(item => item.id !== id);
+            saveCart(cart);
+            renderCartItems();
+            updateCartSummary();
+        }
+
+        function showWhatsappPopup() {
+            const cart = getCart();
+            if (cart.length === 0) {
+                alert('Your cart is empty! Please add items before ordering.');
+                return;
+            }
+            whatsappPopup.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideWhatsappPopup() {
+            whatsappPopup.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function sendWhatsappOrder() {
+            const cart = getCart();
+            if (cart.length === 0) {
+                alert('Your cart is empty!'); // Should not happen if showWhatsappPopup checks
+                return;
+            }
+
+            let message = `*Order from Tamil Food Restaurant*%0A%0A`;
+            message += `*Customer Details*%0A`;
+            message += `Name: [Please enter your name]%0A`;
+            message += `Phone: [Please enter your phone]%0A`;
+            message += `Delivery Address: [Please enter address if delivery]%0A%0A`;
+
+            message += `*Order Items*%0A`;
+            cart.forEach(item => {
+                message += `${item.name} x ${item.quantity} - AED ${(item.price * item.quantity).toFixed(2)}%0A`;
+            });
+
+            message += `%0A*Total: AED ${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}*%0A%0A`;
+            message += `*Special Instructions:* [Any special requests or notes]`;
+
+            const phoneNumber = '+971544205511'; // Restaurant's WhatsApp number
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+            window.open(whatsappUrl, '_blank');
+
+            // Optionally clear cart after sending the order
+            localStorage.removeItem('cart');
+            renderCartItems();
+            updateCartSummary();
+            hideWhatsappPopup();
+        }
+
+        // Expose functions to global scope for onclick attributes
+        window.changeQuantity = changeQuantity;
+        window.removeFromCart = removeFromCart;
+    </script>
+</body>
+</html>
